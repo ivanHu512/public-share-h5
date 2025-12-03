@@ -1,0 +1,132 @@
+.retainPopUpsMoadl {
+  width: 315px;
+  height: 415px;
+  background: rgba(54, 54, 54, 1);
+  background-size: 100% auto;
+  border-radius: 6px 6px 6px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .model_Header {
+    width: 315px;
+    height: 80px;
+    background: linear-gradient(
+      rgba(154, 61, 107, 0.25) 0%,
+      rgba(255, 43, 94, 0) 100%
+    );
+    border-radius: 6px 6px 6px 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .header_title {
+      font-size: 20px;
+      // font-family: Sofia Pro, Sofia Pro;
+      font-weight: 900;
+      color: #ff74ab;
+    }
+    .header_info {
+      width: 230px;
+      height: 64px;
+      color: #c4c4c4;
+      font-size: 13px;
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 7px;
+      span {
+        font-size: 15px;
+        color: rgba(202, 222, 213, 1);
+        display: inline-block;
+      }
+    }
+  }
+  .model_content {
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .content_info {
+      width: 267px;
+      font-size: 14px;
+      // font-weight: 500;
+      color: rgba(255, 255, 255, 0.4);
+      text-align: center;
+    }
+    .content_center {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 291px;
+      height: 212px;
+      background: url(https://v-mps.crazymaplestudios.com/images/5ae5fa30-b044-11ee-aed2-cfe3d80f70eb.png)
+        no-repeat;
+      background-size: 100% 100%;
+      padding-top: 50px;
+
+      .colon {
+        display: inline-block;
+        width: 32px;
+        font-style: normal;
+        font-size: 30px;
+        font-family: Sofia Pro, Sofia Pro;
+        font-weight: 500;
+        color: #ffecee;
+        line-height: 55px;
+        text-align: center;
+      }
+      span {
+        display: inline-block;
+        width: 40px;
+        height: 55px;
+        background: #ffecee;
+        border-radius: 6px 6px 6px 6px;
+        font-size: 30px;
+        font-weight: 500;
+        color: #ff74ab;
+        line-height: 55px;
+        text-align: center;
+        padding-top: 3px;
+      }
+    }
+    .content_center_img {
+      width: 51px;
+      height: 51px;
+      background: url(https://v-mps.crazymaplestudios.com/images/f025bbd0-b049-11ee-aed2-cfe3d80f70eb.png)
+        no-repeat 0 0 / contain;
+      margin-top: 25px;
+    }
+  }
+  .model_btn {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+    .leave_btn {
+      width: 101px;
+      height: 44px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.1);
+      margin-top: 4px;
+      border-radius: 6px;
+      padding-top: 3px;
+    }
+    .look_btn {
+      width: 160px;
+      height: 44px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 16px;
+      background-color: rgba(255, 116, 171, 1);
+      margin-top: 4px;
+      border-radius: 6px;
+      padding-top: 3px;
+      margin-left: 5px;
+    }
+  }
+}

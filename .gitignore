@@ -1,0 +1,33 @@
+# dependencies
+node_modules
+
+# production
+dist
+.gitlab-ci.yml
+Dockerfile
+.git
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# dependencies lock
+yarn.lock
+package-lock.json
+
+# local env files
+.env.local
+.env.*.local
+
+# editor directories and files
+.vscode
+.idea
+
+# visual studio code
+.history
+.temp/**
+functions/*
+
+# misc
+.DS_Store

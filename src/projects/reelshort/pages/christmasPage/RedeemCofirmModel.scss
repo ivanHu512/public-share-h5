@@ -1,0 +1,49 @@
+.redeemCofirmModel {
+  width: 284px;
+  height: 180px;
+  background-color: rgba(17, 63, 47, 1);
+  .redeemCofirmModel_info {
+    width: 284px;
+    height: 127px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      display: inline-block;
+      width: 212px;
+      height: 47px;
+      color: #fff;
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+  .redeemCofirmModel_btn {
+    width: 284px;
+    height: 53px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    .btn_cancel {
+      flex: 1;
+      height: 53px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .btn_yes {
+      flex: 1;
+      height: 53px;
+      color: rgba(234, 53, 67, 1);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

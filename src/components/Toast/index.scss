@@ -1,0 +1,82 @@
+@use "sass:math";
+
+$breakpoint-medium: 604;
+$breakpoint-large: 1024;
+
+@function pxToVw($designPx, $elPx) {
+  @return math.div($elPx, $designPx) * 100vw;
+}
+
+.rs_toast {
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  width: 100%;
+  transform: translate(0%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .rs_toast_content {
+    padding: pxToVw(375, 11) pxToVw(375, 16);
+    border-radius: pxToVw(375, 6);
+    font-size: pxToVw(375, 14);
+    font-weight: 500;
+    line-height: pxToVw(375, 17);
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    background: rgba(54, 54, 54, 0.9);
+    white-space: pre-wrap;
+  }
+}
+
+// 604px至1024px的样式
+@media (min-width: 604px) and (max-width: 1024px) {
+  .rs_toast {
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    width: 100%;
+    transform: translate(0%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .rs_toast_content {
+      max-width:  pxToVw($breakpoint-medium, 323);
+      padding: pxToVw($breakpoint-medium, 11) designToBasePx($breakpoint-medium, 16);
+      border-radius: pxToVw($breakpoint-medium, 6);
+      font-size: pxToVw($breakpoint-medium, 14);
+      font-weight: 500;
+      line-height: pxToVw($breakpoint-medium, 17);
+      color: rgba(255, 255, 255, 1);
+      text-align: center;
+      background: rgba(54, 54, 54, 0.9);
+      white-space: pre-wrap;
+    }
+  }
+}
+
+// 大于1024px的样式
+@media (min-width: 1024px) {
+  .rs_toast {
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    width: 100%;
+    transform: translate(0%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .rs_toast_content {
+      max-width:  pxToVw($breakpoint-large, 464);
+      padding: pxToVw($breakpoint-large, 14) pxToVw($breakpoint-large, 20);
+      border-radius: pxToVw($breakpoint-large, 8);
+      font-size: pxToVw($breakpoint-large, 18);
+      font-weight: 500;
+      line-height: pxToVw($breakpoint-large, 22);
+      color: rgba(255, 255, 255, 1);
+      text-align: center;
+      background: rgba(54, 54, 54, 0.9);
+      white-space: pre-wrap;
+    }
+  }
+}

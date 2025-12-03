@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "SofiaPro";
+  src: url("../assets/family/SofiaPro.ttf");
+  vertical-align: 'baseline';
+}
+
+
+:root {
+  --fontFamily: SofiaPro, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --defaultFontFamily: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+

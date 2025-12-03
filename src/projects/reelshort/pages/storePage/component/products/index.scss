@@ -1,0 +1,173 @@
+[dir='rtl'] .products {
+  .product-item {
+    .discount {
+      left: 0;
+      right: auto;
+      border-radius: 0px 0px 3px 0px;
+    }
+  }
+}
+
+.products {
+
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .product-item {
+
+        position: relative;
+        overflow: hidden;
+        width: 162px;
+        height: 80px;
+        background: #1a1919;
+        border-radius: 3px;
+        border: solid 1px #363636;
+        margin-bottom: 15px;
+
+        &.selected {
+
+            border: 1px solid #e83a57;
+            // background: rgba(252, 67, 131, 0.06);
+
+            .price {
+                background: #e83a57;
+
+            }
+        }
+        .item-main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height:50px;
+
+        }
+
+        .corner {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .discount {
+            padding-top: 2px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 18px;
+            width: 37px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 11px;
+            background: linear-gradient(90deg, #f9885a 0%, #fc6f87 100%);
+            border-radius: 0px 0px 0px 3px;
+        }
+
+        .bonus-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            font-size: 12px;
+            color: #e83a57;
+            height: 14px;
+            line-height: 14px;
+        }
+
+        .coins-img {
+
+            width: 53px;
+            height: 36px;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+            }
+
+            margin: 0 auto;
+            margin-top: 12px;
+        }
+
+        .coins-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 4px;
+            line-height: normal;
+            height: 24px;
+            line-height: normal;
+            .coins-num {
+                font-size: 24px;
+                font-family: SofiaProBold;
+                // color: rgba(34, 34, 34, 1);
+                margin-inline-end: 4px;
+            }
+
+            .coins-text {
+                color: rgba(255, 255, 255, 0.5);
+                margin-top: 2px;
+            }
+        }
+
+        .price {
+            width: 100%;
+
+
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 14px;
+            overflow: hidden;
+            height: 30px;
+            color: rgba($color: #fff, $alpha: 0.7);
+            font-weight: 500;
+            // border-radius: 0 0 3px 3px;
+
+            background: #3a3939;
+
+            .price_box {
+                margin-top: 2px;
+            }
+        }
+
+    }
+
+    .ske-item {
+        width: 162px;
+            height: 80px;
+        border-radius: 3px;
+        margin-bottom: 15px;
+    }
+
+    .product-item-checked {
+        border: 1px solid #FC4383;
+        background: rgba(252, 67, 131, 0.06);
+    }
+
+}
+
+.products-tit {
+    font-size: 18px;
+    margin-bottom: 18px;
+    height: 20px;
+    line-height: normal;
+}
+
+.sub-tit {
+    font-size: 14px;
+    color: #222222;
+    margin-bottom: 18px;
+}

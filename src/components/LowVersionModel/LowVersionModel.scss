@@ -1,0 +1,72 @@
+@import '~@/styles/defaultStyles.scss';
+.lowVersionModel {
+  width: 315px;
+  height: 332px;
+  background-color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px 15px 15px 15px;
+  .lowVersionModel_logo {
+    width: 315px;
+    height: 127px;
+    background: url(https://v-mps.crazymaplestudios.com/images/2c59df60-84f7-11ee-aed2-cfe3d80f70eb.png)
+      no-repeat;
+    background-size: 100% auto;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+  .lowVersionModel_info {
+    width: 254px;
+    height: 62px;
+    font-size: 18px;
+    line-height: 27px;
+    margin: 0 auto;
+    margin-top: 20px;
+    color: #fff;
+    text-align: center;
+  }
+  .lowVersionModel_btn {
+    width: 200px;
+    height: 40px;
+    background-color: #e83a57;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 40px;
+    font-size: 18px;
+    line-height: 21px;
+    color: #fff;
+  }
+}
+
+.lowVersionModel_Android {
+  width: 315px;
+  height: 274px;
+  justify-content: center;
+  background-color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px 15px 15px 15px;
+  .lowVersionModel_logo {
+    width: 315px;
+    height: 127px;
+    background: url(https://v-mps.crazymaplestudios.com/images/2c59df60-84f7-11ee-aed2-cfe3d80f70eb.png)
+      no-repeat;
+    background-size: 100% auto;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+  .lowVersionModel_info {
+    width: 254px;
+    height: 62px;
+    font-size: 18px;
+    line-height: 20px;
+    margin: 0 auto;
+    margin-top: 16px;
+    color: #fff;
+    text-align: center;
+  }
+}

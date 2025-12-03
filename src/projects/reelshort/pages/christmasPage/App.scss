@@ -1,0 +1,591 @@
+@import '~@/styles/defaultStyles.scss';
+
+@font-face {
+  font-family: 'SofiaPro';
+  src: url(https://v-mps.crazymaplestudios.com/images/2a6b28f0-6812-11ee-be48-d1e02de79efc.ttf);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SofiaProBold';
+  src: url(https://v-mps.crazymaplestudios.com/images/a0977200-680c-11ee-be48-d1e02de79efc.ttf);
+  font-display: swap;
+}
+
+* {
+  font-family: 'SofiaProBold', -apple-system, BlinkMacSystemFont, 'Helvetica',
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background-color: rgba(185, 12, 41, 1);
+}
+
+.am-toast {
+  z-index: 99999999 !important;
+}
+
+.main {
+  position: relative;
+  width: 375px;
+  margin: 0 auto;
+  color: black;
+  background-color: rgba(185, 12, 41, 1);
+  min-height: 100vh;
+  // max-width: 375px;
+}
+
+.nav-header {
+  position: absolute;
+  top: 0;
+  width: 375px;
+  z-index: 10;
+  height: 75px;
+  padding-top: 35px;
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease-in-out;
+  .title {
+    font-size: 16px;
+    color: #fff;
+    width: 200px;
+    text-align: center;
+    //一行 截断
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: 'SofiaPro';
+    display: none;
+  }
+
+  &.sticky {
+    top: 0;
+    position: fixed;
+    background: #88071b;
+
+    .title {
+      position: absolute;
+      width: 375px;
+      display: block;
+      text-align: center;
+    }
+    .back {
+      width: 56px;
+      height: 100%;
+      background: url(https://v-mps.crazymaplestudios.com/images/f7499370-67e5-11ee-be48-d1e02de79efc.png)
+        no-repeat center center / 20px 20px;
+      z-index: 11;
+      // margin-left: 18px;
+    }
+  }
+}
+
+.back {
+  width: 56px;
+
+  height: 100%;
+  background: url(https://v-mps.crazymaplestudios.com/images/e33111e0-89d4-11ee-aed2-cfe3d80f70eb.png)
+    no-repeat center center / 28px 28px;
+  z-index: 11;
+  // margin-left: 18px;
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: url(https://v-mps.crazymaplestudios.com/images/4139d370-89c7-11ee-aed2-cfe3d80f70eb.gif)
+      no-repeat 0 0 / contain;
+  }
+}
+
+.banner {
+  height: 330px;
+  position: relative;
+  background: url(https://v-mps.crazymaplestudios.com/images/5e9a2520-89cf-11ee-aed2-cfe3d80f70eb.png)
+    no-repeat center;
+  background-size: 100% auto;
+  .title {
+    color: #ffaa00;
+    width: 250px;
+    font-size: 27px;
+    text-align: center;
+    line-height: 1.1;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 730px;
+
+  .schedule_box {
+    width: 375px;
+    height: 237px;
+    position: relative;
+    background: url(https://v-mps.crazymaplestudios.com/images/90b4b870-89db-11ee-aed2-cfe3d80f70eb.png)
+      no-repeat center;
+    background-size: 100% auto;
+    position: absolute;
+    top: -61px;
+    padding-top: 96px;
+    .schedule_title {
+      font-size: 15px;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+    }
+    .schedule_line {
+      margin-top: 15px;
+      padding-left: 7px;
+      padding-right: 13px;
+      display: flex;
+      position: relative;
+      .progress_header {
+        width: 45px;
+        color: #fff;
+        font-size: 12px;
+        text-align: right;
+      }
+      .progress_box {
+        margin-left: 5px;
+        margin-top: 5px;
+        width: 288px;
+        .progress_line {
+          width: 100%;
+          height: 16px;
+          background-color: rgba(11, 37, 27, 1);
+          border-radius: 8px;
+          position: relative;
+          .progress_bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: url(https://v-mps.crazymaplestudios.com/images/d2226590-89f0-11ee-aed2-cfe3d80f70eb.png)
+              no-repeat center;
+            background-size: auto 100%;
+            height: 16px;
+            border-radius: 8px;
+          }
+        }
+        .progress_num {
+          display: flex;
+          margin-top: 7px;
+          .progress_num_item {
+            width: 72px;
+            height: 19px;
+            display: flex;
+            justify-content: flex-end;
+          }
+          .item {
+            width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+          }
+        }
+      }
+      .progress_free_btn {
+        width: 47px;
+        height: 39px;
+        background: url(https://v-mps.crazymaplestudios.com/images/706bdd10-89e4-11ee-aed2-cfe3d80f70eb.png)
+          no-repeat center;
+        background-size: 100% auto;
+        position: absolute;
+        right: 0;
+        margin-right: 13px;
+        transform: translateY(-7px);
+      }
+    }
+  }
+  .super_sale_box {
+    height: 644px;
+    width: 100%;
+    background: url(https://v-mps.crazymaplestudios.com/images/35c1d8b0-9b1c-11ee-aed2-cfe3d80f70eb.png)
+      no-repeat center;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 103px;
+    padding-top: 92px;
+    .super_sale_header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .super_sale_title {
+        color: #fff;
+        font-size: 15px;
+      }
+      .super_sale_price {
+        height: 58px;
+        width: 221px;
+        background: url(https://v-mps.crazymaplestudios.com/images/b35c7d80-89f5-11ee-aed2-cfe3d80f70eb.png)
+          no-repeat center;
+        background-size: 100% auto;
+      }
+      .super_sale_info {
+        margin-top: 3px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 13px;
+        margin-bottom: 5px;
+      }
+    }
+    .super_sale_book {
+      width: 320px;
+      height: 188px;
+      border-radius: 5px;
+      .book_info {
+        width: 320px;
+        height: 134px;
+        background-color: rgba(14, 46, 35, 1);
+        display: flex;
+        padding: 18px 11px 11px 11px;
+        border-radius: 5px 5px 0px 0px;
+
+        .book_info_pic {
+          border-radius: 6px;
+          width: 80px;
+          height: 106px;
+        }
+        .book_info_text {
+          margin-left: 11px;
+          display: flex;
+          flex-direction: column;
+          align-content: space-between;
+          .book_info_title {
+            font-size: 14px;
+            width: 216px;
+            color: #fff;
+
+            @include one-row-ellipsis();
+          }
+          .book_info_theme {
+            margin-top: 7px;
+            font-size: 14px;
+            width: 216px;
+            color: rgba(138, 177, 166, 1);
+            @include multiple-row-ellipsis(3);
+          }
+          .book_info_episodes {
+            font-size: 13px;
+            color: #fff;
+            margin-top: 7px;
+          }
+        }
+      }
+      .book_buy_box {
+        width: 100%;
+        height: 55px;
+        background-color: rgba(17, 63, 47, 1);
+        display: flex;
+        align-items: center;
+        border-radius: 0px 0px 5px 5px;
+
+        .book_buy_price {
+          font-size: 23px;
+          color: rgba(234, 198, 130, 1);
+          margin-left: 41px;
+        }
+        .book_buy_btn {
+          width: 170px;
+          height: 41px;
+          border-radius: 5px;
+          background-color: rgba(234, 53, 67, 1);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fff;
+          font-size: 20px;
+          margin-left: 37px;
+          margin-right: 15px;
+          padding-top: 3px;
+        }
+      }
+    }
+    .super_sale_similar_book {
+      width: 340px;
+      margin-top: 17px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      .similar_info {
+        color: #fff;
+        font-size: 12px;
+        width: 314px;
+        @include one-row-ellipsis();
+      }
+      .super_sale_similar_list {
+        position: relative;
+        width: 100%;
+        margin-top: 7px;
+        padding: 0 12px;
+        display: flex;
+        margin: 0 auto;
+        overflow-x: auto;
+        overflow-y: hidden;
+        //隐藏滚动条
+        -ms-overflow-style: none;
+        transform: translateX(-1px);
+        &::-webkit-scrollbar {
+          display: none !important;
+        }
+
+        .similar_item {
+          height: 210px;
+          width: calc(93px + 17px);
+          padding-right: 17px;
+          .similar_item_pic {
+            border-radius: 6px;
+            width: 93px;
+            height: 124px;
+            font-size: 10px;
+            color: #fff;
+            line-height: 20px;
+            text-align: center;
+
+            .corner_mark {
+              padding-top: 2px;
+              width: 55px;
+              height: 20px;
+              background-color: rgba(167, 126, 55, 1);
+              border-radius: 6px 0 6px 0;
+            }
+          }
+          .similar_item_title {
+            margin-top: 7px;
+            font-size: 9px;
+            color: #fff;
+            height: 23px;
+            line-height: 12px;
+            @include two-row-ellipsis();
+          }
+          .similar_item_btn {
+            position: relative;
+            bottom: 0;
+            width: 93px;
+            height: 33px;
+            background-color: rgba(234, 53, 67, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 15px;
+            margin-top: 14px;
+            border-radius: 5px;
+            padding-top: 3px;
+            span {
+              display: inline-block;
+              width: 41px;
+              height: 36px;
+              background: url(https://v-mps.crazymaplestudios.com/images/5e71b7a0-8b66-11ee-aed2-cfe3d80f70eb.png)
+                no-repeat center;
+              background-size: 100% auto;
+              position: absolute;
+              top: 8px;
+              right: -12px;
+            }
+          }
+          .similar_item_btn_redeem {
+            background-color: rgba(226, 77, 39, 1);
+          }
+          // &:last-child {
+          //   margin-right: 0;
+          // }
+        }
+      }
+    }
+  }
+}
+.content_max_height {
+  height: 730px;
+}
+.content_min_height {
+  height: 147px;
+}
+.content_footer {
+  position: relative;
+  overflow: hidden;
+  .recommended_works {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .recommended_works_box {
+      width: 347px;
+      height: 350px;
+      padding-top: 77px;
+      .recommended_works_item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .recommended_works_item_title {
+          width: 274px;
+          height: 27px;
+          background: url(https://v-mps.crazymaplestudios.com/images/cf5ba430-8a8f-11ee-aed2-cfe3d80f70eb.png)
+            no-repeat center;
+          background-size: 100% auto;
+          font-size: 36px;
+          color: rgba(107, 44, 25, 1);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          span {
+            transform: translateY(7px);
+          }
+        }
+        .recommended_works_item_books {
+          display: flex;
+          margin-top: 20px;
+          .item_books_box {
+            height: 200px;
+            width: 93px;
+            margin-left: 17px;
+            position: relative;
+            .item_books_pic {
+              border-radius: 6px;
+              font-size: 10px;
+              color: #fff;
+              line-height: 20px;
+              text-align: center;
+              width: 93px;
+              height: 124px;
+              .corner_mark {
+                padding-top: 2px;
+
+                width: 55px;
+                height: 20px;
+                background-color: rgba(167, 126, 55, 1);
+                border-radius: 6px 0 6px 0;
+              }
+            }
+            .item_books_title {
+              margin-top: 7px;
+              font-size: 9px;
+              color: rgba(56, 24, 24, 1);
+              @include two-row-ellipsis();
+            }
+            .item_books_btn {
+              position: absolute;
+              bottom: 0;
+              width: 93px;
+              height: 33px;
+              background-color: rgba(16, 88, 67, 1);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: #fff;
+              font-size: 14px;
+              margin-top: 14px;
+              border-radius: 5px;
+              padding-top: 3px;
+              span {
+                display: inline-block;
+                width: 41px;
+                height: 36px;
+                background: url(https://v-mps.crazymaplestudios.com/images/5e71b7a0-8b66-11ee-aed2-cfe3d80f70eb.png)
+                  no-repeat center;
+                background-size: 100% auto;
+                position: absolute;
+                top: 8px;
+                right: -12px;
+              }
+            }
+            .item_books_btn_redeem {
+              background-color: rgba(226, 77, 39, 1);
+            }
+
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+    .recommended_works_nine {
+      background: url(https://v-mps.crazymaplestudios.com/images/c083d0b0-8a8d-11ee-aed2-cfe3d80f70eb.png)
+        no-repeat center;
+      background-size: 100% auto;
+      margin-top: -10px;
+    }
+    .recommended_works_four {
+      background: url(https://v-mps.crazymaplestudios.com/images/c1016520-8a8d-11ee-aed2-cfe3d80f70eb.png)
+        no-repeat center;
+      background-size: 100% auto;
+      margin-top: -10px;
+    }
+    .recommended_works_one {
+      background: url(https://v-mps.crazymaplestudios.com/images/bfea01b0-8a8d-11ee-aed2-cfe3d80f70eb.png)
+        no-repeat center;
+      background-size: 100% auto;
+      margin-top: -10px;
+    }
+  }
+  .christmas_rule {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 18px;
+    .christmas_tree {
+      width: 375px;
+      height: 110px;
+      background: url(https://v-mps.crazymaplestudios.com/images/adb785f0-8a95-11ee-aed2-cfe3d80f70eb.png)
+        no-repeat center;
+      background-size: 100% auto;
+    }
+    .christmas_rule_title {
+      width: 344px;
+      height: 18px;
+      background: url(https://v-mps.crazymaplestudios.com/images/1469d900-8a97-11ee-aed2-cfe3d80f70eb.png)
+        no-repeat center;
+      background-size: 100% auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(236, 208, 181, 1);
+      line-height: 15px;
+    }
+    .rules_info {
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(255, 236, 202, 1);
+      line-height: 18px;
+      margin-top: 12px;
+    }
+    .christmas_footer {
+      width: 411px;
+      height: 261px;
+      overflow: hidden;
+      background: url(https://v-mps.crazymaplestudios.com/images/afe58980-8a95-11ee-aed2-cfe3d80f70eb.png)
+        no-repeat center;
+      background-size: 100% auto;
+    }
+  }
+}

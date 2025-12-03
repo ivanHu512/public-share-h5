@@ -1,0 +1,104 @@
+.profile {
+  margin-top: 18px;
+  margin-bottom: 30px;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+  padding-bottom: 18px;
+
+  .user {
+    display: flex;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      margin-inline-start: 12px;
+      // justify-content: center;
+      width: 100%;
+      margin-top: 4px;
+
+      .uname {
+        font-size: 15px;
+        width: 200px;
+        overflow: hidden;
+        height: 18px;
+        line-height: 18px;
+        font-family: SofiaProBold;
+        // margin-top: 5px;
+      }
+
+      .uid {
+        font-size: 12px;
+        margin-top: 4px;
+        width: 150px;
+        height: 14px;
+        line-height: 14px;
+      }
+
+      .coins {
+        font-size: 12px;
+        display: flex;
+        margin-top: 8px;
+        height: 18px;
+        line-height: 18px;
+        // color: rgba(34, 34, 34, 1);
+
+        .icon {
+          width: 15px;
+          height: 15px;
+          margin-inline-end: 6px;
+
+          background: url(https://v-mps.crazymaplestudios.com/images/e3906790-e1c6-11ee-94ca-b3f9375866ba.png)
+            no-repeat 0 0 / contain;
+        }
+
+        .coin-num {
+          margin-inline-end: 15px;
+          font-size: 12px;
+
+          span {
+            color: #e83a57;
+          }
+        }
+
+        .bonus-num {
+          span {
+            color: #e83a57;
+          }
+        }
+      }
+    }
+  }
+  .notice-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+    background: rgba(232, 58, 87, 0.16);
+    border-radius: 3px;
+  }
+
+  .notice {
+    font-size: 12px;
+    // height: 23px;
+    // line-height: 23px;
+
+    padding: 6px 4px;
+    display: flex;
+    justify-content: center;
+    label {
+      color: #e83a57;
+      margin-right: 3px;
+      white-space: nowrap;
+    }
+  }
+
+  .avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+}

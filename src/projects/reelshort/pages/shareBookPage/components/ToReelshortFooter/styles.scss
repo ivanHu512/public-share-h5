@@ -1,0 +1,47 @@
+.to-v-footer {
+  width: 339px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 6px 6px 6px 6px;
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  img {
+    width: 31px;
+    height: 31px;
+  }
+  p {
+    font-size: 13px;
+    color: #222;
+  }
+  .open-btn {
+    width: 63px;
+    height: 26px;
+    background: #e83a57;
+    border-radius: 6px 6px 6px 6px;
+    color: #fff;
+    padding: 2px;
+    text-align: center;
+    line-height: 26px;
+  }
+}
+
+.go-to-reelshort {
+  width: 185px;
+  height: 42px;
+  background: #ff3d5d;
+  border-radius: 6px 6px 6px 6px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 36px;
+  color: #fff;
+}

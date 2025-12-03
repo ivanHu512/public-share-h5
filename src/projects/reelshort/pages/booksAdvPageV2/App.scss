@@ -1,0 +1,54 @@
+// @import '~@/styles/defaultStyles.scss';
+// @font-face {
+//   font-family: 'SofiaPro';
+//   src: url('./assets/family/georgia.ttf');
+//   vertical-align: baseline;
+// }
+* {
+  // font-family: var(--fontFamily);
+  // font-family: 'Times New Roman', Times, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+.page-ctr {
+  // padding-top: 23px;
+  // 给跳转块保留的高度
+  width: 100%;
+  // margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh);
+  padding: 23px 0 102px 0;
+  background-color: rgba(246, 246, 246, 1);
+
+  .logo_box {
+    margin: 94px auto 250px;
+    width: 139px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    img {
+      width: 80px;
+      height: 80px;
+    }
+    p {
+      width: 139px;
+      height: 44px;
+      font-size: 31px;
+      font-weight: bold;
+      color: #000000;
+      margin: 9px 0 0;
+    }
+  }
+  .store {
+    width: 170px;
+    height: 50px;
+    margin: 0 auto;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

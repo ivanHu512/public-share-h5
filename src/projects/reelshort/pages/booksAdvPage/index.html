@@ -1,0 +1,93 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-31 17:45:46
+ * @LastEditTime: 2025-03-02 07:39:15
+ * @LastEditors: shaojia
+ * @Description: In User Settings Edit
+ * @FilePath: /H5/src/projects/kiss/pages/authorPage/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+
+
+  <title>Short Drama</title>
+
+  <!-- 正式验证代码 -->
+  <!-- <meta name="facebook-domain-verification" content="j3egbg2whfqv2rq6vvuq8at7ltb6bt" /> -->
+
+  <!-- 灰度验证代码 -->
+  <!-- <meta name="facebook-domain-verification" content="fpmwimfxp1gcp1p68nfmfw5hmug6ld" /> -->
+
+  <!-- Meta Pixel Code -->
+  <script>
+    ! function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    // fbq('init', '1176033869759437');
+    // fbq('track', 'PageView');
+
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="" /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <script>
+    //Part1
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject = t; var ttq = w[t] = w[t] || []; ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie"], ttq.setAndDefer = function (t, e) { t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }; for (var i = 0; i < ttq.methods.length; i++)ttq.setAndDefer(ttq, ttq.methods[i]); ttq.instance = function (t) { for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++)ttq.setAndDefer(e, ttq.methods[n]); return e }, ttq.load = function (e, n) { var i = "https://analytics.tiktok.com/i18n/pixel/events.js"; ttq._i = ttq._i || {}, ttq._i[e] = [], ttq._i[e]._u = i, ttq._t = ttq._t || {}, ttq._t[e] = +new Date, ttq._o = ttq._o || {}, ttq._o[e] = n || {}; var o = document.createElement("script"); o.type = "text/javascript", o.async = !0, o.src = i + "?sdkid=" + e + "&lib=" + t; var a = document.getElementsByTagName("script")[0]; a.parentNode.insertBefore(o, a) };
+
+      //Part 2
+      // ttq.load('YOUR PIXEL ID WILL BE LOCATED HERE');
+      // ttq.page();
+    }(window, document, 'ttq');
+  </script>
+  <!-- Snap Pixel Code -->
+  <script type='text/javascript'>(function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function(){a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];var s='script';r=t.createElement(s);r.async=!0;r.src=n;var u=t.getElementsByTagName(s)[0];u.parentNode.insertBefore(r,u);})(window,document,'https://sc-static.net/scevent.min.js');</script>
+  <!-- End Snap Pixel Code -->
+  <!-- Snap Pixel Code -->
+  <script type='text/javascript'>(function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function(){a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];var s='script';r=t.createElement(s);r.async=!0;r.src=n;var u=t.getElementsByTagName(s)[0];u.parentNode.insertBefore(r,u);})(window,document,'https://sc-static.net/scevent.min.js');</script>
+  <!-- End Snap Pixel Code -->
+  <!-- Twitter conversion tracking base and event code -->
+  <script>
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
+    a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+  </script>
+  <!-- End Twitter conversion tracking base and event code -->
+</head>
+
+<body style="font-size: 0.22rem">
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+</body>
+
+</html>

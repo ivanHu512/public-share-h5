@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "noEmit": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@kiss/*": ["./src/projects/kiss/*"],
+      "@spotlight/*": ["./src/projects/spotlight/*"],
+      "@chapters/*": ["./src/projects/chapters/*"],
+      "@feedback/*": ["./src/projects/feedback/*"],
+      "@scream/*": ["./src/projects/scream/*"],
+      "@reelshort/*": ["./src/projects/reelshort/*"],
+    }
+  },
+  // "include": ["src"],
+  "exclude": ["./node_modules/**/*"]
+}

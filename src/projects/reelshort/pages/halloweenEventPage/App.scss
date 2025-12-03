@@ -1,0 +1,315 @@
+@import '~@/styles/defaultStyles.scss';
+
+@font-face {
+  font-family: "SofiaPro";
+  src: url(https://v-mps.crazymaplestudios.com/images/2a6b28f0-6812-11ee-be48-d1e02de79efc.ttf);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SofiaProBold";
+  src: url(https://v-mps.crazymaplestudios.com/images/a0977200-680c-11ee-be48-d1e02de79efc.ttf);
+  font-display: swap;
+}
+
+* {
+  font-family: 'SofiaProBold', -apple-system, BlinkMacSystemFont, 'Helvetica', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background-color: transparent;
+  
+
+}
+
+
+.main {
+  position: relative;
+  width: 375px;
+  margin: 0 auto;
+  color: black;
+  overflow: hidden;
+  background: #fff;
+  min-height: 100vh;
+
+}
+.loading {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: url(https://v-mps.crazymaplestudios.com/images/bc0d7f70-6d70-11ee-bebf-63262cdeda28.gif) no-repeat 0 0 /contain;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  
+}
+
+.nav-header {
+  position: absolute;
+  top: 0;
+  width: 375px;
+  z-index: 10;
+  height: 75px;
+  padding-top: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background .3s ease-in-out;
+
+  .title {
+    font-size: 16px;
+    color: #fff;
+    width: 200px;
+    text-align: center;
+    //一行 截断
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: 'SofiaPro';
+    display: none;
+
+  }
+
+  &.sticky {
+    top: 0;
+    position: fixed;
+    background: #000;
+
+    .title {
+      display: block;
+    }
+  }
+
+}
+
+.back {
+  width: 56px;
+ 
+  height: 100%;
+  background: url(https://v-mps.crazymaplestudios.com/images/f7499370-67e5-11ee-be48-d1e02de79efc.png) no-repeat center center /20px 20px;
+  z-index: 11;
+  // margin-left: 18px;
+}
+
+.share {
+  width: 56px;
+  height: 100%;
+  background: url(https://v-mps.crazymaplestudios.com/images/50b52360-681e-11ee-be48-d1e02de79efc.png) no-repeat center center /20px 20px;
+  // padding-right: 18px;
+
+}
+
+.banner {
+  height: 416px;
+  position: relative;
+
+  .title {
+    color: #FFAA00;
+    width: 250px;
+    font-size: 27px;
+    text-align: center;
+    line-height: 1.1;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+
+  }
+
+  .text {
+    color: rgba(242, 172, 255, 1);
+    font-size: 17px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    font-family: 'SofiaPro';
+  }
+
+  .text-bouns {
+    color: #ffffff;
+    font-size: 42px;
+    position: absolute;
+    left: 50%;
+    line-height: 1;
+    transform: translateX(-50%);
+    top: 118px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .desc {
+    font-size: 14px;
+    // font-weight: bold;
+    color: #F2AAFF;
+    text-align: center;
+    width: 225px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    top: 188px;
+  }
+}
+
+.goods {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  min-height: 157px;
+
+  .goods-list {
+    height: 471px;
+    overflow: hidden;
+
+    &.expand {
+      height: auto;
+    }
+  }
+
+  .btn-expand {
+    width: 26px;
+    height: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url(https://v-mps.crazymaplestudios.com/images/52010450-681e-11ee-be48-d1e02de79efc.png) no-repeat 0 0 /contain;
+  }
+
+  .goods-item {
+    width: 100%;
+    height: 157px;
+    position: relative;
+    background: url(https://v-mps.crazymaplestudios.com/images/c03ab530-681c-11ee-be48-d1e02de79efc.png) no-repeat 0 0 /contain;
+
+    .content {
+      width: 280px;
+      overflow: hidden;
+      position: absolute;
+      bottom: 85px;
+      color: #2D0346;
+      font-size: 18px;
+      text-align: center;
+      font-family: 'SofiaPro';
+      left: 80px;
+
+     
+    }
+
+
+    .extra {
+      height: 27px;
+      background: linear-gradient(88deg, #F85913 0%, #F07000 100%);
+      box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.16);
+      border-radius: 4px 0px 0px 4px;
+      opacity: 1;
+      position: absolute;
+      top: 14px;
+      right: 11px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+
+      justify-content: center;
+      padding: 0 10px;
+
+      span {
+        margin-top: 2px;
+      }
+
+    }
+
+    .btn-buy {
+      width: 200px;
+      height: 37px;
+      background: #AF0DFF;
+      border-radius: 6px 6px 6px 6px;
+      opacity: 1;
+      position: absolute;
+      bottom: 39px;
+      left: 119px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #FFD77A;
+      font-size: 18px;
+      //font-family: Arial, Helvetica, sans-serif;
+
+      line-height: 1;
+
+      .font {
+        font-family: 'SofiaPro';
+        margin-top: 3px;
+      }
+
+      &.purchased {
+        background: #A398C8;
+        color: #fff;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.btn-cost {
+  width: 200px;
+  height: 37px;
+  background: #AF0DFF;
+  border-radius: 6px 6px 6px 6px;
+  opacity: 1;
+}
+
+.rules {
+
+  // padding-top: 200px;
+
+
+  .rules-head {
+
+    text-align: center;
+    position: relative;
+    padding-top: 90px;
+    margin-bottom: -1px;
+    width: 375px;
+    height: 106px;
+    background: url(https://v-mps.crazymaplestudios.com/images/e9b3f560-680e-11ee-be48-d1e02de79efc.png) no-repeat 0 bottom /contain;
+
+    .title {
+      color: #F2ACFF;
+      font-size: 13px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 360px;
+      margin: 0 auto;
+    }
+  }
+
+  .rules-con {
+    font-size: 10px;
+    padding: 0 18px;
+    color: rgba(242, 172, 255, 0.61);
+    line-height: 18px;
+    font-family: 'SofiaPro';
+    // opacity: .61;
+    background: #2B0457;
+    padding-top: 14px;
+    padding-bottom: 28px;
+
+  }
+}
+
+.debug {
+  color: #fff;
+  word-wrap: break-word;
+  position: absolute;
+
+  width: 100%;
+}

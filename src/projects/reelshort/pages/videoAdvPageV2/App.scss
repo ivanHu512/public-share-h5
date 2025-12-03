@@ -1,0 +1,105 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.page-ctr {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgba($color: #000, $alpha: 0.7);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    filter: blur(10px);
+    z-index: -1;
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 552px;
+
+    .bottom-btn {
+      position: relative;
+      width: 339px;
+      height: 50px;
+      margin: 0 auto 15px;
+      line-height: 50px;
+      border-radius: 3px;
+      text-align: center;
+      background-color: #E83A57;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      animation: btnChange 0.9s linear infinite;
+
+      .finger {
+        position: absolute;
+        bottom: -25px;
+        right: -5px;
+        width: 50px;
+        height: 50px;
+        transform: translate(-7px, -7px);
+        background: url(./assets/icon_finger.png) no-repeat;
+        background-size: cover;
+        animation: fingerMove 0.9s linear infinite;
+      }
+
+      @keyframes fingerMove {
+        0% {
+          transform: translate(0, 0);
+        }
+
+        33% {
+          transform: translate(-7px, -7px);
+        }
+
+        66% {
+          transform: translate(-7px, -7px);
+        }
+
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+
+      @keyframes btnChange {
+        0% {
+          transform: scale(1);
+        }
+
+        33% {
+          transform: scale(1);
+        }
+
+        66% {
+          transform: scale(.92);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}

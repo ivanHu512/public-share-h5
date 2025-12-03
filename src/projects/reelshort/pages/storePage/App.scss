@@ -1,0 +1,307 @@
+@import '~@/styles/defaultStyles.scss';
+
+@font-face {
+  font-family: "Sofia Pro-Medium";
+  src: url(https://v-mps.crazymaplestudios.com/images/2a6b28f0-6812-11ee-be48-d1e02de79efc.ttf);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SofiaProBold";
+  src: url(https://v-mps.crazymaplestudios.com/images/a0977200-680c-11ee-be48-d1e02de79efc.ttf);
+  font-display: swap;
+}
+
+body {
+  font-family: Sofia Pro-Medium, -apple-system, BlinkMacSystemFont, 'Helvetica', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  background: #000;
+  color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.button {
+  width: 200px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E83A57;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 0 none;
+  color: #fff;
+  font-family: Sofia Pro-Medium!important;
+ 
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.skeleton {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  background-color: #444;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(90deg,
+        rgba(#fff, 0) 0,
+        rgba(#fff, 0.2) 20%,
+        rgba(#fff, 0.5) 60%,
+        rgba(#fff, 0));
+    animation: shimmer 2s infinite;
+    content: '';
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+.container {
+  width: 375px;
+  margin: 0 auto;
+
+}
+
+.adm-mask-content {
+  font-size: 14px;
+}
+
+main {
+  padding: 0 20px;
+  padding-bottom: 126px;
+
+  .tip {
+    line-height: 16px;
+    margin-top: 23px;
+    color: rgba(153, 153, 153, 1);
+
+    .tip-content {
+      margin-top: 5px;
+
+    }
+  }
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  height: 500px;
+
+  .err-tit {
+    font-size: 20px;
+    margin-top: 23px;
+    font-family: SofiaProBold;
+  }
+
+  .error-img {
+    width: 55px;
+    height: 55px;
+    background: url(https://v-mps.crazymaplestudios.com/images/946c4470-e10a-11ee-94ca-b3f9375866ba.png) no-repeat 0 0 /contain;
+  }
+
+  .text {
+
+    font-size: 14px;
+    line-height: 23px;
+    margin: 0 20px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+  }
+
+}
+
+.site-head {
+  height: 53px;
+  display: flex;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+  align-items: center;
+  padding: 0 20px;
+
+  .site-logo {
+    width: 34px;
+    height: 34px;
+    overflow: hidden;
+    margin-inline-end: 8px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .site-name {
+
+    font-size: 21px;
+    margin-top: 2px;
+    font-family: SofiaProBold;
+    color: #fff;
+  }
+}
+
+.section-title {
+  font-size: 18px;
+  margin-bottom: 14px;
+  height: 20px;
+  line-height: normal;
+}
+
+.skeleton-title {
+  height: 20px;
+  width: 150px;
+  margin-bottom: 18px;
+}
+
+
+
+
+.paybutton {
+  position: fixed;
+  bottom: 0;
+  height: 105px;
+  width: 375px;
+  z-index: 1;
+  background: #fff;
+  border-top: solid 1px #ccc;
+  font-family: SofiaProBold;
+
+}
+
+.tip {
+  font-size: 12px;
+
+}
+
+.recheckOrder {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(153, 153, 153, 1);
+  margin-top: 40px;
+  line-height: 16px;
+
+  a {
+    color: #FC4383;
+    text-decoration: underline;
+  }
+}
+
+.custom-modal {
+  margin: 0;
+  max-width: 320px;
+  min-height: 180px;
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
+  overflow-y: unset;
+  background: #000;
+  background-color: #1f1f1f;
+  // background-clip: padding-box;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+
+  .react-responsive-modal-closeButton {
+    position: absolute;
+    width: 33px;
+    height: 33px;
+    bottom: 0;
+  }
+
+
+  .pay-status-title {
+    font-size: 19px;
+    text-align: center;
+    // color: rgba(34, 34, 34, 1);
+    margin-top: 30px;
+    font-family: SofiaProBold;
+
+  }
+
+  .pay-result-content {
+    font-size: 15px;
+    padding: 20px 0;
+    text-align: center;
+    // color: rgba(102, 102, 102, 1);
+    line-height: 23px;
+  }
+
+  .modal-button {
+    width: 196px;
+    height: 44px;
+    background: linear-gradient(90deg, #FF468B 0%, #EB3093 100%);
+    border-radius: 22px;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 18px;
+    margin: 0 auto;
+    border: none;
+    font-family: Sofia Pro-Medium;
+  }
+
+  .modal-close {
+    width: 33px;
+    height: 33px;
+    background: url(https://v-mps.crazymaplestudios.com/images/8cd448d0-8ddf-11ee-aed2-cfe3d80f70eb.png) no-repeat 0 0 /contain;
+  }
+
+  .pay-now {
+    
+   
+    margin-top: 30px;
+
+  }
+
+  .react-responsive-modal-closeButton {
+    width: 33px;
+    height: 33px;
+    position: absolute;
+    bottom: -50px !important;
+    top: auto !important;
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    outline: none;
+  }
+
+  .suc-icon {
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    margin-left: -27px;
+    background: url(https://v-mps.crazymaplestudios.com/images/4da166b0-8e5d-11ee-aed2-cfe3d80f70eb.png) no-repeat 0 0 /contain;
+
+  }
+
+  .fail-icon {
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    margin-left: -27px;
+    background: url(https://v-mps.crazymaplestudios.com/images/4ead7f80-8e5d-11ee-aed2-cfe3d80f70eb.png) no-repeat 0 0 /contain;
+  }
+}

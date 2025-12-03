@@ -1,0 +1,281 @@
+@use "sass:math";
+
+@import '~@/styles/defaultStyles.scss';
+
+$breakpoint-medium: 604;
+$breakpoint-large: 1024;
+@function pxToVw($designPx, $elPx) {
+  @return $elPx  * 1PX;
+}
+
+@function pxTransitionVw($designPx, $elPx) {
+  @return math.div($elPx, $designPx) * 100vw;
+}
+
+@font-face {
+  font-family: "SofiaPro";
+  src: url("../../assets/family/SofiaPro.ttf");
+  vertical-align: baseline;
+}
+
+* {
+  font-family: 'SofiaPro', -apple-system, BlinkMacSystemFont, 'Helvetica', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background-color: #000;
+}
+
+body {
+  margin: 0 auto;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.main {
+  position: relative;
+  .header_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: pxToVw(375, 88);
+    padding-top: pxToVw(375, 44);
+    z-index: 1000; /* 确保导航栏在最上层 */
+    background-color: #000;
+    .header {
+      height: pxToVw(375, 44);
+      padding: pxToVw(375, 10) pxToVw(375, 16);
+      display: flex;
+      align-items: center;
+      .back_btn {
+        width: pxToVw(375, 24);
+        height: pxToVw(375, 24);
+      }
+      .page_title {
+        flex: 1;
+        padding-right: pxToVw(375, 24);
+        text-align: center;
+        font-size: pxToVw(375, 18);
+        font-weight: 500;
+        line-height: pxToVw(375, 22);
+        color: rgba(255, 255, 255, 0.9);
+      }
+    }
+  }
+  .wrap {
+    // margin-top: pxToVw(375, 88);
+    padding: pxToVw(375, 12) pxToVw(375, 16) pxToVw(375, 24) pxToVw(375, 16);
+    .banner {
+      position: relative;
+      padding-top: 38.11%; 
+      overflow: hidden;
+      img{
+        width:100%;
+        position: absolute;
+        top:0;
+      }
+    }
+    .title {
+      font-size: pxToVw(375, 24);
+      font-weight: 700;
+      line-height: pxToVw(375, 30);
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: pxToVw(375, 24);
+    }
+    .desc {
+      font-size: pxToVw(375, 15);
+      font-weight: 500;
+      line-height: pxToVw(375, 22);
+      margin-top: pxToVw(375, 8);
+      color: rgba(255, 255, 255, 0.9);
+
+    }
+  }
+
+  .list {
+    padding-left: pxToVw(375, 16);
+    padding-right: pxToVw(375, 16);
+    .item {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: pxToVw(375, 15);
+      font-weight: 500;
+      line-height: pxToVw(375, 18);
+      color: rgba(255, 255, 255, 0.9);
+      .label {
+        margin-inline-end: pxToVw(375, 4);
+      }
+      .link {
+        color: rgba(87, 154, 255, 1);
+        text-decoration: underline;
+      }
+      .copy_icon {
+        width: pxToVw(375, 16);
+        height: pxToVw(375, 16);
+        vertical-align: middle;
+        // transform: translateY(-0.6vw);
+        margin-inline-start: pxToVw(375, 2);
+      }
+    }
+  }
+
+}
+
+// 604px至1024px的样式
+@media (min-width: 604px) and (max-width: 1024px) {
+  .main {
+    position: relative;
+    .header_container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: pxToVw($breakpoint-medium, 76);
+      padding-top: pxToVw($breakpoint-medium, 32);
+      z-index: 1000; /* 确保导航栏在最上层 */
+      background-color: #000;
+      .header {
+        height: pxToVw($breakpoint-medium, 44);
+        padding: pxToVw($breakpoint-medium, 10) pxToVw($breakpoint-medium, 16);
+        display: flex;
+        align-items: center;
+        .back_btn {
+          width: pxToVw($breakpoint-medium, 24);
+          height: pxToVw($breakpoint-medium, 24);
+        }
+        .page_title {
+          flex: 1;
+          padding-right: pxToVw($breakpoint-medium, 24);
+          text-align: center;
+          font-size: pxToVw($breakpoint-medium, 18);
+          font-weight: 500;
+          line-height: pxToVw($breakpoint-medium, 22);
+          color: rgba(255, 255, 255, 0.9);
+        }
+      }
+    }
+    .wrap {
+      // margin-top: pxToVw($breakpoint-medium, 76);
+      padding: pxToVw($breakpoint-medium, 16) pxToVw($breakpoint-medium, 16) pxToVw($breakpoint-medium, 24);
+      color: rgba(255, 255, 255, 0.9);
+      .title {
+        font-size: pxToVw($breakpoint-medium, 24);
+        font-weight: 700;
+        line-height: pxToVw($breakpoint-medium, 30);
+        margin-top: pxToVw($breakpoint-medium, 32);
+      }
+      .desc {
+        font-size: pxToVw($breakpoint-medium, 15);
+        font-weight: 500;
+        line-height: pxToVw($breakpoint-medium, 22);
+        margin-top: pxToVw($breakpoint-medium, 8);
+      }
+    }
+  
+    .list {
+      padding-left: pxToVw($breakpoint-medium, 16);
+      padding-right: pxToVw($breakpoint-medium, 16);
+      .item {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: pxToVw($breakpoint-medium, 15);
+        font-weight: 500;
+        line-height: pxToVw($breakpoint-medium, 18);
+        color: rgba(255, 255, 255, 0.9);
+        .label {
+          margin-inline-end: pxToVw($breakpoint-medium, 4);
+        }
+        .copy_icon {
+          width: pxToVw($breakpoint-medium, 16);
+          height: pxToVw($breakpoint-medium, 16);
+          vertical-align: middle;
+          // transform: translateY(-0.4vw);
+          margin-inline-start: pxToVw($breakpoint-medium, 2);
+        }
+      }
+    }
+  }
+}
+
+// 大于1024px的样式
+@media (min-width: 1024px) {
+  .main {
+    position: relative;
+    .header_container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: pxToVw($breakpoint-large, 86);
+      padding-top: pxToVw($breakpoint-large, 30);
+      z-index: 1000; /* 确保导航栏在最上层 */
+      background-color: #000;
+      .header {
+        height: pxToVw($breakpoint-large, 56);
+        padding: pxToVw($breakpoint-large, 13) pxToVw($breakpoint-large, 24);
+        display: flex;
+        align-items: center;
+        .back_btn {
+          width: pxToVw($breakpoint-large, 30);
+          height: pxToVw($breakpoint-large, 30);
+        }
+        .page_title {
+          flex: 1;
+          padding-right: pxToVw($breakpoint-large, 30);
+          text-align: center;
+          font-size: pxToVw($breakpoint-large, 22);
+          font-weight: 500;
+          line-height: pxToVw($breakpoint-large, 28);
+          color: rgba(255, 255, 255, 0.9);
+        }
+      }
+    }
+    .wrap {
+      // margin-top: pxToVw($breakpoint-large, 86);
+      padding: pxToVw($breakpoint-large, 16) pxToVw($breakpoint-large, 24) pxToVw($breakpoint-large, 24) pxToVw($breakpoint-large, 24);
+      color: rgba(255, 255, 255, 0.9);
+      .title {
+        font-size: pxToVw($breakpoint-large, 30);
+        font-weight: 700;
+        line-height: pxToVw($breakpoint-large, 38);
+        margin-top: pxToVw($breakpoint-large, 36);
+      }
+      .desc {
+        font-size: pxToVw($breakpoint-large, 18);
+        font-weight: 500;
+        line-height: pxToVw($breakpoint-large, 22);
+        margin-top: pxToVw($breakpoint-large, 12);
+  
+      }
+    }
+  
+    .list {
+      padding-left: pxToVw($breakpoint-large, 24);
+      padding-right: pxToVw($breakpoint-large, 24);
+      .item {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: pxToVw($breakpoint-large, 20);
+        font-weight: 500;
+        line-height: pxToVw($breakpoint-large, 25);
+        color: rgba(255, 255, 255, 0.9);
+        .label {
+          margin-inline-end: pxToVw($breakpoint-large, 6);
+        }
+        .copy_icon {
+          width: pxToVw($breakpoint-large, 20);
+          height: pxToVw($breakpoint-large, 20);
+          vertical-align: middle;
+          // transform: translateY(-0.2vw);
+          margin-inline-start: pxToVw($breakpoint-large, 2);
+        }
+      }
+    }
+  }
+}
+
+
+

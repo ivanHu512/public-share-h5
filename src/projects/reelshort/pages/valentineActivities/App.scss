@@ -1,0 +1,295 @@
+@import '~@/styles/defaultStyles.scss';
+
+@font-face {
+  font-family: 'SofiaPro';
+  src: url(https://v-mps.crazymaplestudios.com/images/2a6b28f0-6812-11ee-be48-d1e02de79efc.ttf);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SofiaProBold';
+  src: url(https://v-mps.crazymaplestudios.com/images/a0977200-680c-11ee-be48-d1e02de79efc.ttf);
+  font-display: swap;
+}
+
+* {
+  font-family: 'SofiaProBold', -apple-system, BlinkMacSystemFont, 'Helvetica',
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background-color: rgba(172, 24, 80, 1);
+}
+
+.main {
+  position: relative;
+  width: 375px;
+  margin: 0 auto;
+  overflow: hidden;
+  min-height: 100vh;
+  background-color: rgba(172, 24, 80, 1);
+}
+.nav-header {
+  position: absolute;
+  top: 0;
+  width: 375px;
+  z-index: 10;
+  height: 75px;
+  padding-top: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease-in-out;
+
+  .title {
+    font-size: 16px;
+    color: #fff;
+    width: 200px;
+    text-align: center;
+    //一行 截断
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: 'SofiaPro';
+    display: none;
+  }
+
+  &.sticky {
+    top: 0;
+    position: fixed;
+    background: #a8184f;
+
+    .title {
+      position: absolute;
+      width: 375px;
+      display: block;
+      text-align: center;
+    }
+    .back {
+      width: 56px;
+      height: 100%;
+      background: url(https://v-mps.crazymaplestudios.com/images/f7499370-67e5-11ee-be48-d1e02de79efc.png)
+        no-repeat center center / 20px 20px;
+      z-index: 11;
+      // margin-left: 18px;
+    }
+  }
+}
+
+.back {
+  width: 66px;
+  height: 66px;
+  background: url(https://v-mps.crazymaplestudios.com/images/52907c40-b11e-11ee-aed2-cfe3d80f70eb.png)
+    no-repeat center center / 28px 28px;
+  z-index: 11;
+  // margin-left: 18px;
+}
+
+.banner {
+  height: 336px;
+  position: relative;
+
+  .title {
+    color: #ffaa00;
+    width: 250px;
+    font-size: 27px;
+    text-align: center;
+    line-height: 1.1;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .text {
+    color: rgba(242, 172, 255, 1);
+    font-size: 17px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    font-family: 'SofiaPro';
+  }
+
+  .text-bouns {
+    color: #ffffff;
+    font-size: 42px;
+    position: absolute;
+    left: 50%;
+    line-height: 1;
+    transform: translateX(-50%);
+    top: 118px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .desc {
+    font-size: 14px;
+    // font-weight: bold;
+    color: #f2aaff;
+    text-align: center;
+    width: 225px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    top: 188px;
+  }
+}
+
+.content_box {
+  // width: 100%;
+  min-height: calc(100vh - 336px);
+  background: linear-gradient(180deg, #ac1850 0%, #311a23 100%);
+  .goods {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 20px;
+
+    .goods-list {
+      overflow: hidden;
+      padding: 0 31px;
+    }
+
+    .goods-item {
+      width: 100%;
+      height: 130px;
+      position: relative;
+      background: url(https://v-mps.crazymaplestudios.com/images/6b96d670-b025-11ee-aed2-cfe3d80f70eb.png)
+        no-repeat 0 0 / contain;
+      display: flex;
+      align-items: center;
+
+      .item_left {
+        width: 100px;
+        height: 100px;
+        background: url(https://v-mps.crazymaplestudios.com/images/dd955ab0-b027-11ee-aed2-cfe3d80f70eb.png)
+          no-repeat 0 0 / contain;
+        margin-top: 23px;
+      }
+
+      .item_right {
+        position: absolute;
+        bottom: 20px;
+        right: 16px;
+        .content {
+          width: 190px;
+          overflow: hidden;
+          bottom: 85px;
+          color: rgba(147, 10, 62, 1);
+          font-size: 14px;
+          text-align: center;
+          // font-family: 'SofiaPro';
+        }
+        .btn-buy {
+          width: 190px;
+          height: 30px;
+          background: rgba(255, 116, 171, 1);
+          border-radius: 6px 6px 6px 6px;
+          opacity: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fff;
+          font-size: 16px;
+          //font-family: Arial, Helvetica, sans-serif;
+
+          line-height: 1;
+
+          .font {
+            font-family: 'SofiaPro';
+            margin-top: 3px;
+          }
+
+          &.purchased {
+            background: #a398c8;
+            color: #fff;
+            font-size: 14px;
+          }
+        }
+      }
+
+      .extra {
+        width: 60px;
+        height: 60px;
+        background: url(https://v-mps.crazymaplestudios.com/images/36a661a0-b02b-11ee-aed2-cfe3d80f70eb.png)
+          no-repeat 0 0 / contain;
+        position: absolute;
+        top: 0;
+        right: -4px;
+        color: #fff;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10px;
+        text-align: center;
+
+        span {
+          margin-top: 2px;
+          word-break: normal;
+          transform: rotate(13deg) translateY(-4px);
+        }
+      }
+    }
+  }
+
+  .rules {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .rules-head {
+      text-align: center;
+      width: 375px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 49px;
+      .arrow_left {
+        width: 94px;
+        height: 4px;
+        background: url(https://v-mps.crazymaplestudios.com/images/302c5520-b02e-11ee-aed2-cfe3d80f70eb.png)
+          no-repeat 0 0 / contain;
+      }
+      .arrow_right {
+        width: 94px;
+        height: 4px;
+        background: url(https://v-mps.crazymaplestudios.com/images/3536c4b0-b02e-11ee-aed2-cfe3d80f70eb.png)
+          no-repeat 0 0 / contain;
+      }
+
+      .title {
+        color: rgba(255, 221, 235, 0.8);
+        font-size: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin: 0 auto;
+      }
+    }
+
+    .rules-con {
+      width: 316px;
+      font-size: 12px;
+      // padding: 0 30px;
+      color: rgba(255, 221, 235, 0.5);
+      line-height: 18px;
+      font-family: 'SofiaPro';
+      padding-top: 14px;
+      padding-bottom: 19px;
+      text-align: left;
+    }
+  }
+}
+
+.debug {
+  color: #fff;
+  word-wrap: break-word;
+  position: absolute;
+  width: 100%;
+}

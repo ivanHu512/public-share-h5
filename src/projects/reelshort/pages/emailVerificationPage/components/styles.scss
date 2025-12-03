@@ -1,0 +1,35 @@
+.successful_box {
+  padding: 46px 0 28px;
+  text-align: center;
+
+  h2 {
+    height: 34px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+  p {
+    width: 303px;
+    font-size: 15px;
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 23px;
+  }
+  img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 28px;
+    width: 188px;
+    height: 138px;
+  }
+}
+.failure_box {
+  min-height: 352px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 46px 24px;
+}

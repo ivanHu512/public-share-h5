@@ -1,0 +1,172 @@
+import { getPageQuery } from '@/utils/utils'
+const copywriting = {
+  bind_email_web_title: {
+    default: '验证成功',
+    en: 'Verification Successful!',
+    es: '¡Verificación exitosa!',
+    pt: 'Verificação bem-sucedida!',
+    in: 'Verifikasi Berhasil!',
+    th: 'ตรวจสอบเรียบร้อยแล้ว',
+    de: 'Bestätigung erfolgreich!',
+    fr: 'Vérification réussie!',
+    hi: 'सत्यापन सफल!',
+    fil: 'Matagumpay na Pag-verify!',
+    tr: 'Doğrulama Başarılı!',
+    ko: '확인 성공!',
+    ja: '検証成功！',
+    it: 'Verifica riuscita!',
+    ar: 'تم التحقق بنجاح!',
+    pl: 'Weryfikacja Powiodła Się!',
+    ro: 'Verificare reușită!',
+    cs: 'Ověření úspěšné!',
+    bg: 'Успешна проверка!',
+    vi: 'Ověření úspěšné!'
+  },
+  bind_email_web_text_title: {
+    default: '恭喜，您已完成邮箱验证。',
+    en: 'Congratulations! Email verification complete.',
+    es: '¡Felicidades! Verificación de correo electrónico completa.',
+    pt: 'Parabéns! Verificação de email completa.',
+    in: 'Selamat! Verifikasi email selesai.',
+    th: 'ยินดีด้วย! การตรวจสอบอีเมลเรียบร้อยแล้ว',
+    de: 'Herzlichen Glückwunsch! E-Mail-Verifizierung abgeschlossen.',
+    fr: `Félicitations ! Vérification de l'e-mail terminée.`,
+    hi: 'बधाई हो! ईमेल सत्यापन पूरा हुआ।',
+    fil: 'Congratulations! Email verification complete.',
+    tr: 'Tebrikler! E-posta doğrulaması tamamlandı.',
+    ko: '축하합니다! 이메일 인증이 완료되었습니다.',
+    ja: 'おめでとうございます！メールの確認が完了しました。',
+    it: 'Congratulazioni! Verifica email completata.',
+    ar: 'تهانينا! تم التحقق من البريد الإلكتروني.',
+    pl: 'Gratulacje! Weryfikacja e-mail zakończona.',
+    ro: 'Felicitări! Verificarea adresei de e-mail a fost finalizată.',
+    cs: 'Gratulujeme! Ověření e-mailu dokončeno.',
+    bg: 'Поздравления! Потвърждаването на имейл адреса е завършено.',
+    vi: 'Cảm ơn! Ověření e-mailu dokončeno.'
+  },
+  bind_email_web_text: {
+    default: '$1 Bonuses已将自动发放到您的ReelShort账号.',
+    en: 'Your email address has been verified. $1 coins have been sent to your ReelShort account.',
+    es: 'Tu dirección de correo electrónico ha sido verificada. Se han enviado $1 monedas a tu cuenta de ReelShort.',
+    pt: 'Seu endereço de e-mail foi verificado. $1 moedas foram adicionados à sua conta ReelShort.',
+    in: 'Alamat email-mu telah diverifikasi. $1 koin telah dikirim ke akun ReelShort-mu.',
+    th: '$1 เหรียญได้ถูกโอนเข้าไปในบัญชี ReelShort ของคุณเรียบร้อยแล้ว',
+    de: 'Deine E-Mail-Adresse wurde erfolgreich bestätigt. $1 Münzen wurden an deinen ReelShort-Account versandt.',
+    fr: 'Félicitations! Votre adresse e-mail a été vérifiée. $1 pièces ont été envoyés sur votre compte ReelShort',
+    hi: '$1 सिक्के आपके ReelShort खाते में स्वचालित रूप से जमा कर दिए गए हैं।',
+    fil: 'Ang iyong email address ay na-verify na. $1 coins ay naipadala sa iyong ReelShort account',
+    tr: 'E-posta adresiniz doğrulandı. $1 koin, ReelShort hesabınıza gönderildi',
+    ko: '$1 코인이 귀하의 ReelShort 계정에 자동으로 발송되었습니다.',
+    ja: '$1 コインが自動的にあなたの ReelShort アカウントに送られました。',
+    it: 'Il tuo indirizzo email è stato verificato. I monete premio di $1 sono stati inviati al tuo account ReelShort.',
+    ar: 'تم التحقق من عنوان بريدك الإلكتروني. تم إرسال $1 دولار من عملات المكافآت إلى حسابك في ReelShort.',
+    pl: 'Twój adres e-mail został zweryfikowany. Monety o wartości 1 $ zostały wysłane na Twoje konto ReelShort.',
+    ro: 'Adresa ta de e-mail a fost verificată. Monede de 1 dolar au fost trimise în contul tău ReelShort.',
+    cs: 'Vaše e-mailová adresa byla ověřena. Na váš účet ReelShort byly odeslány mince v hodnotě 1 dolaru.',
+    bg: 'Вашият имейл адрес е потвърден. Монети от $1 са изпратени до вашия ReelShort акаунт.',
+    vi: 'Bạn có thể gửi e-mailová adresa byla ověřena. Na váš účet ReelShort byly odeslány mince v hodnotě 1 đô la.'
+  },
+
+  bind_email_web_error: {
+    default: '验证失败',
+    en: 'Verification Failed',
+    es: 'Error de verificación',
+    pt: 'Falha na verificação',
+    in: 'Verifikasi gagal',
+    th: 'การยืนยันล้มเหลว',
+    de: 'Bestätigung gescheitert',
+    fr: 'La boîte de réception est obsolète',
+    hi: 'सत्यापन असफल',
+    fil: 'Hindi Matagumpay na Pag-verify',
+    tr: 'Doğrulama Başarısız',
+    ko: '확인 실패',
+    ja: '検証に失敗しました',
+    it: 'Verifica fallita',
+    ar: 'فشل التحقق',
+    pl: 'Weryfikacja Nie Powiodła Się',
+    ro: 'Verificare eșuată',
+    cs: 'Ověření se nezdařilo',
+    bg: 'Проверката не бе успешна',
+    vi: 'Ověření se nezdařilo'
+  },
+  bind_email_web_bound_alert: {
+    default: '该邮箱已被绑定',
+    en: 'This email address has been linked',
+    es: 'Esta dirección de correo electrónico ha sido vinculada',
+    pt: 'Este endereço de e-mail foi vinculado',
+    in: 'Alamat email ini telah ditautkan',
+    th: 'เชื่อมโยงที่อยู่อีเมลนี้แล้ว',
+    de: 'Diese E-Mail-Adresse wurde verbunden',
+    fr: 'Cette adresse e-mail a été liée',
+    hi: 'इस ईमेल पते को जोड़ दिया गया है',
+    fil: 'Ang email address na ito ay na-link na',
+    tr: 'Bu e-posta adresi bağlantılı',
+    ko: '이 이메일 주소는 이미 연결되었습니다',
+    ja: 'このメールアドレスはリンクされています',
+    it: 'Questo indirizzo email è già associato',
+    ar: 'تم ربط هذا العنوان البريدي',
+    pl: 'Ten adres e-mail jest już przypisany',
+    ro: 'Această adresă de e-mail a fost conectată',
+    cs: 'Tato e-mailová adresa byla propojena',
+    bg: 'Този имейл адрес е свързан',
+    vi: 'Tato e-mailová adresa byla propojena'
+  },
+  bind_email_web_account_alert: {
+    default: '当前账户已绑定了邮箱',
+    en: 'The current account has already been linked to an email address.',
+    es: 'La cuenta actual ya ha sido vinculada a una dirección de correo electrónico',
+    pt: 'A conta atual já foi vinculada a um endereço de e-mail',
+    in: 'Akun saat ini sudah terhubung ke alamat email',
+    th: 'บัญชีปัจจุบันถูกเชื่อมโยงกับที่อยู่อีเมลแล้ว',
+    de: 'Das aktuelle Konto wurde bereits mit einer E-Mail-Adresse verknüpft',
+    fr: 'Le compte actuel a déjà été lié à une adresse e-mail',
+    hi: 'वर्तमान खाता पहले से ही ईमेल पते से जुड़ा हुआ है।',
+    fil: 'Ang kasalukuyang account ay nakakabit na sa isang email address',
+    tr: 'Mevcut hesap zaten bir e-posta adresine bağlandı',
+    ko: '현재 계정은 이미 이메일 주소에 연결되어 있습니다',
+    ja: '現在のアカウントは既に電子メールアドレスにリンクされています',
+    it: "L'account attuale è già associato a un indirizzo email.",
+    ar: 'تم ربط الحساب الحالي بعنوان بريد إلكتروني بالفعل.',
+    pl: 'Konto zostało już połączone z adresem e-mail.',
+    ro: 'Contul curent a fost deja conectat la o adresă de e-mail.',
+    cs: 'Aktuální účet již byl propojen s e-mailovou adresou.',
+    bg: 'Текущият акаунт вече е свързан с имейл адрес.',
+    vi: 'Aktuální účet již byl propojen s e-mailovou adresou.'
+  },
+  bind_email_web_rul_fail: {
+    default: '邮箱已失效',
+    en: 'The current verification link has expired. Please go to the latest verification email for verification, or resend the verification email',
+    es: 'El enlace de verificación ha caducado. Vaya al último correo para verificar o reenvíe el correo.',
+    pt: 'O link de verificação expirou. Vá para o último email para verificar ou reenvie o email.',
+    in: 'Tautan verifikasi kedaluwarsa. Pergi ke email terbaru untuk verifikasi atau kirim ulang email.',
+    th: 'ลิงก์การตรวจสอบหมดอายุแล้ว ไปที่อีเมลล่าสุดเพื่อตรวจสอบหรือส่งอีเมลอีกครั้ง',
+    de: 'Der Bestätigungslink ist abgelaufen. Gehe zur letzten Bestätigungs-E-Mail zur Bestätigung oder sende sie erneut.',
+    fr: `Le lien de vérification a expiré. Allez à l'e-mail le plus récent pour vérifier ou renvoyez-le.`,
+    hi: 'सत्यापन लिंक समाप्त हो गया है। सत्यापन के लिए नवीनतम ईमेल पर जाएं या फिर से ईमेल भेजें।',
+    fil: 'Ang link ng pag-verify ay nag-expire. Pumunta sa huling email para mag-verify o magpadala muli.',
+    tr: 'Doğrulama bağlantısı süresi doldu. Doğrulama için son e-postaya gidin veya yeniden gönderin.',
+    ko: '확인 링크가 만료되었습니다. 확인을 위해 최신 이메일로 이동하거나 다시 보내십시오.',
+    ja: '確認リンクが期限切れです。最新の確認メールに移動するか、再送信してください。',
+    it: "Il link di verifica attuale è scaduto. Vai alla nuova email di verifica per completare la verifica, o invia di nuovo l'email di verifica.",
+    ar: 'الرابط الحالي للتحقق قد انتهت صلاحيته. يرجى الانتقال إلى أحدث رسالة تحقق عبر البريد الإلكتروني للتحقق، أو إعادة إرسال رسالة التحقق.',
+    pl: 'Link weryfikacyjny wygasł. Przejdź do najnowszej wiadomości e-maila weryfikacyjnego w celu weryfikacji lub wyślij go ponownie',
+    ro: 'Linkul de verificare curent a expirat. Te rugăm să accesezi cel mai recent e-mail pentru verificare sau să retrimiți e-mailul de verificare.',
+    cs: 'Platnost aktuálního ověřovacího odkazu vypršela. Pro ověření prosím přejděte k nejnovějšímu ověřovacímu e-mailu nebo ověřovací e-mail znovu odešlete.',
+    bg: 'Текущата връзка за потвърждение е изтекла. Моля, отидете на последния имейл за потвърждение или изпратете отново имейла за потвърждение.',
+    vi: 'Platnost aktuálního ověřovacího odkazu vypršela. Pro ověření proím přejděte k nejnovějšímu ověřovacímu e-mailu nebo ověřovací e-mail znovu odešlete.'
+  }
+}
+
+export const i18n = (key: string, ...args: string[]): string => {
+  const { lang = 'en' } = getPageQuery()
+  // @ts-ignore
+  let translatedText = copywriting[key][lang] || copywriting[key]['en']
+
+  // 替换特殊表示符 $1, $2, ...
+  args.forEach((arg, index) => {
+    const placeholder = `$${index + 1}`
+    translatedText = translatedText?.replace(placeholder, arg)
+  })
+
+  return translatedText
+}

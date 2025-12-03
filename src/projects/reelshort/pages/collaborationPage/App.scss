@@ -1,0 +1,227 @@
+@use "sass:math";
+
+@import '~@/styles/defaultStyles.scss';
+
+$breakpoint-medium: 604;
+$breakpoint-large: 1024;
+@function pxToVw($designPx, $elPx) {
+  @return $elPx  * 1PX;
+}
+
+@function pxTransitionVw($designPx, $elPx) {
+  @return math.div($elPx, $designPx) * 100vw;
+}
+
+@font-face {
+  font-family: "SofiaPro";
+  src: url("../../assets/family/SofiaPro.ttf");
+  vertical-align: baseline;
+}
+
+* {
+  font-family: 'SofiaPro', -apple-system, BlinkMacSystemFont, 'Helvetica', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background-color: #000;
+}
+
+body {
+  margin: 0 auto;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.main {
+  position: relative;
+  .header_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: pxToVw(375, 88);
+    padding-top: pxToVw(375, 44);
+    z-index: 1000; /* 确保导航栏在最上层 */
+    .header {
+      height: pxToVw(375, 44);
+      padding: pxToVw(375, 10) pxToVw(375, 16);
+      display: flex;
+      align-items: center;
+      .back_btn {
+        width: pxToVw(375, 24);
+        height: pxToVw(375, 24);
+      }
+    }
+  }
+  .bg_container {
+    width: 100%;
+    height: pxTransitionVw(375, 230);
+    background: url('https://v-mps.crazymaplestudios.com/images/3420bc70-5af6-11ef-838e-777d81c2a9c7.png') no-repeat 0 0 / 100vw;
+  }
+  .info_container {
+    padding: pxToVw(375, 12) pxToVw(375, 16);
+    .title {
+      line-height: pxToVw(375, 24);
+      font-size: pxToVw(375, 19);
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: pxToVw(375, 12);
+    }
+    .describe {
+      margin-bottom: pxToVw(375, 16);
+      font-weight: 500;
+      line-height: pxToVw(375, 22);
+      font-size: pxToVw(375, 15);
+      color: rgba(255, 255, 255, 0.9);
+      white-space: pre-wrap;
+      .subhead {
+        font-size: pxToVw(375, 17);
+        font-weight: 800;
+      }
+      .link {
+        color: rgba(87, 154, 255, 1);
+        text-decoration: underline;
+      }
+      .copy_icon {
+        width: pxToVw(375, 16);
+        height: pxToVw(375, 16);
+        vertical-align: middle;
+        // transform: translateY(-0.6vw);
+        margin-inline-start: pxToVw(375, 2);
+      }
+    }
+  }
+}
+
+// 604px至1024px的样式
+@media (min-width: 604px) and (max-width: 1024px) {
+  .main {
+    position: relative;
+    .header_container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: pxToVw($breakpoint-medium, 76);
+      padding-top: pxToVw($breakpoint-medium, 32);
+      z-index: 1000; /* 确保导航栏在最上层 */
+      .header {
+        height: pxToVw($breakpoint-medium, 44);
+        padding: pxToVw($breakpoint-medium, 10) pxToVw($breakpoint-medium, 16);
+        display: flex;
+        align-items: center;
+        .back_btn {
+          width: pxToVw($breakpoint-medium, 24);
+          height: pxToVw($breakpoint-medium, 24);
+        }
+      }
+    }
+    .bg_container {
+      width: 100%;
+      height: pxTransitionVw($breakpoint-medium, 280);
+      background: url('https://v-mps.crazymaplestudios.com/images/046bfd30-5af8-11ef-838e-777d81c2a9c7.png') no-repeat 0 0 / 100vw;
+    }
+    .info_container {
+      padding: pxToVw($breakpoint-medium, 12) pxToVw($breakpoint-medium, 16);
+      .title {
+        line-height: pxToVw($breakpoint-medium, 23);
+        font-size: pxToVw($breakpoint-medium, 19);
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: pxToVw($breakpoint-medium, 12);
+      }
+      .describe {
+        margin-bottom: pxToVw($breakpoint-medium, 16);
+        font-weight: 500;
+        line-height: pxToVw($breakpoint-medium, 22);
+        font-size: pxToVw($breakpoint-medium, 15);
+        color: rgba(255, 255, 255, 0.9);
+        white-space: pre-wrap;
+        .subhead {
+          font-size: pxToVw($breakpoint-medium, 17);
+          font-weight: 800;
+        }
+        .link {
+          color: rgba(87, 154, 255, 1);
+          text-decoration: underline;
+        }
+        .copy_icon {
+          width: pxToVw($breakpoint-medium, 16);
+          height: pxToVw($breakpoint-medium, 16);
+          vertical-align: middle;
+          // transform: translateY(-0.2vw);
+          margin-inline-start: pxToVw($breakpoint-medium, 2);
+        }
+      }
+    }
+  }
+}
+
+// 大于1024px的样式
+@media (min-width: 1024px) {
+  .main {
+    position: relative;
+    .header_container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: pxToVw($breakpoint-large, 86);
+      padding-top: pxToVw($breakpoint-large, 30);
+      z-index: 1000; /* 确保导航栏在最上层 */
+      .header {
+        height: pxToVw($breakpoint-large, 56);
+        padding: pxToVw($breakpoint-large, 13) pxToVw($breakpoint-large, 24);
+        display: flex;
+        align-items: center;
+        .back_btn {
+          width: pxToVw($breakpoint-large, 30);
+          height: pxToVw($breakpoint-large, 30);
+        }
+      }
+    }
+    .bg_container {
+      width: 100%;
+      height: pxTransitionVw($breakpoint-large, 474);
+      background: url('https://v-mps.crazymaplestudios.com/images/7805ccd0-5af8-11ef-838e-777d81c2a9c7.png') no-repeat 0 0 / 100vw;
+    }
+    .info_container {
+      padding: pxToVw($breakpoint-large, 24) pxToVw($breakpoint-large, 24);
+      .title {
+        line-height: pxToVw($breakpoint-large, 32);
+        font-size: pxToVw($breakpoint-large, 26);
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: pxToVw($breakpoint-large, 16);
+      }
+      .describe {
+        margin-bottom: pxToVw($breakpoint-large, 22);
+        font-weight: 500;
+        line-height: pxToVw($breakpoint-large, 22);
+        font-size: pxToVw($breakpoint-large, 18);
+        color: rgba(255, 255, 255, 0.9);
+        white-space: pre-wrap;
+        .subhead {
+          font-size: pxToVw($breakpoint-large, 20);
+          font-weight: 800;
+        }
+        .link {
+          color: rgba(87, 154, 255, 1);
+          text-decoration: underline;
+        }
+        .copy_icon {
+          width: pxToVw($breakpoint-large, 20);
+          height: pxToVw($breakpoint-large, 20);
+          vertical-align: middle;
+          // transform: translateY(-0.2vw);
+          margin-inline-start: pxToVw($breakpoint-large, 2);
+        }
+      }
+    }
+  }
+}
+
+
+

@@ -1,0 +1,237 @@
+{
+  "name": "stardust-h5",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "test": "node scripts/test.js",
+    "build:test": "cross-env REACT_APP_ENV=test node scripts/build.js && npm run zip && git add dist.zip && git commit -m 'chore: build test'",
+    "build:prod": "cross-env REACT_APP_ENV=prod node scripts/build.js && npm run zip && git add dist.zip",
+    "build:gray": "cross-env REACT_APP_ENV=gray node scripts/build.js && npm run zip && git add dist.zip",
+    "bt": "npm run build:test",
+    "bp": "npm run build:prod",
+    "bg": "npm run build:gray",
+    "build:a": "cross-env REACT_APP_ENV=prod node scripts/build.js $*",
+    "build-kiss:test": "cross-env PROJECT_NAME=kiss REACT_APP_ENV=test node scripts/build.js $*",
+    "build-kiss:prod": "cross-env PROJECT_NAME=kiss REACT_APP_ENV=prod node scripts/build.js $*",
+    "start": "cross-env node scripts/start.js $*",
+    "dev": "npm run start",
+    "start-kiss:test": "cross-env PROJECT_NAME=kiss REACT_APP_ENV=test node scripts/start.js $*",
+    "start-kiss:prod": "cross-env PROJECT_NAME=kiss REACT_APP_ENV=prod node scripts/start.js $*",
+    "start-kiss": "cross-env PROJECT_NAME=kiss node scripts/start.js $*",
+    "dev:fb": "cross-env PROJECT_NAME=feedback REACT_APP_ENV=dev node scripts/start.js $*",
+    "skt": "npm run start-kiss:test",
+    "skp": "npm run start-kiss:prod",
+    "bkt": "npm run build-kiss:test",
+    "bkp": "npm run build-kiss:prod",
+    "zip": "rm -f dist.zip && zip -q -r dist.zip ./dist"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@babel/core": "7.9.0",
+    "@sentry/react": "8.7.0",
+    "@stripe/react-stripe-js": "^2.4.0",
+    "@stripe/stripe-js": "^2.2.0",
+    "@svgr/webpack": "4.3.3",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/crypto-js": "^4.2.2",
+    "@types/jest": "^24.0.0",
+    "@types/lodash": "^4.14.168",
+    "@types/md5": "^2.3.5",
+    "@types/node": "^12.19.2",
+    "@types/qs": "^6.9.5",
+    "@types/react-dom": "^16.9.9",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/react-select": "^4.0.15",
+    "@types/react-sticky": "^6.0.3",
+    "ahooks": "^2.7.1",
+    "antd-mobile": "^2.3.4",
+    "antd-mobile-v5": "npm:antd-mobile@next",
+    "babel-eslint": "10.1.0",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "8.1.0",
+    "babel-plugin-named-asset-import": "^0.3.7",
+    "babel-preset-react-app": "^9.1.2",
+    "camelcase": "^5.3.1",
+    "case-sensitive-paths-webpack-plugin": "2.3.0",
+    "clipboard": "^2.0.6",
+    "clsx": "^1.1.1",
+    "crypto-js": "^4.2.0",
+    "css-loader": "3.4.2",
+    "dotenv": "8.2.0",
+    "dotenv-expand": "5.1.0",
+    "fflate": "^0.7.1",
+    "handlebars-loader": "^1.7.1",
+    "html-react-parser": "^1.2.6",
+    "html-webpack-plugin": "4.0.0-beta.11",
+    "html2canvas": "^1.3.3",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "24.9.0",
+    "jest-environment-jsdom-fourteen": "1.0.1",
+    "jest-resolve": "24.9.0",
+    "jest-watch-typeahead": "0.4.2",
+    "js-base64": "^3.7.2",
+    "js-sha256": "^0.9.0",
+    "jsencrypt": "^3.3.2",
+    "lib-flexible": "^0.3.2",
+    "lodash": "^4.17.20",
+    "mini-css-extract-plugin": "0.9.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "optimize-css-assets-webpack-plugin": "5.0.3",
+    "pnp-webpack-plugin": "1.6.4",
+    "postcss-flexbugs-fixes": "4.1.0",
+    "postcss-loader": "3.0.0",
+    "postcss-normalize": "8.0.1",
+    "postcss-preset-env": "6.7.0",
+    "postcss-px2rem-exclude": "^0.0.6",
+    "postcss-safe-parser": "4.0.1",
+    "qs": "^6.9.4",
+    "rc-form": "^2.4.11",
+    "react": "^16.14.0",
+    "react-app-polyfill": "^1.0.6",
+    "react-countdown": "^2.3.2",
+    "react-dev-utils": "^10.2.1",
+    "react-dom": "^16.14.0",
+    "react-highlight-words": "^0.17.0",
+    "react-hook-form": "^7.6.9",
+    "react-images-uploading": "^3.1.2",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-modal": "^3.14.2",
+    "react-photo-view": "^0.5.2",
+    "react-player": "^2.9.0",
+    "react-query": "^3.16.0",
+    "react-responsive-modal": "^6.4.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.4",
+    "react-select": "^4.3.1",
+    "resolve": "1.15.0",
+    "resolve-url-loader": "3.1.1",
+    "sass": "^1.90.0",
+    "sass-loader": "8.0.2",
+    "semver": "6.3.0",
+    "smoothscroll-polyfill": "^0.4.4",
+    "style-loader": "0.23.1",
+    "swiper": "8.4.6",
+    "terser-webpack-plugin": "2.3.8",
+    "ts-pnp": "1.1.6",
+    "typescript": "^4",
+    "umi-request": "^1.3.5",
+    "url-loader": "2.3.0",
+    "webpack": "4.42.0",
+    "webpack-dev-server": "3.11.0",
+    "webpack-manifest-plugin": "2.2.0",
+    "workbox-webpack-plugin": "4.3.1"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.11",
+    "@types/react": "^16.9.54",
+    "@types/react-highlight-words": "^0.16.2",
+    "@types/react-modal": "^3.12.0",
+    "@types/smoothscroll-polyfill": "^0.3.1",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4",
+    "babel-plugin-import": "^1.13.1",
+    "babel-polyfill": "^6.26.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.12.1",
+    "eslint-config-alloy": "^3.8.2",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-loader": "3.0.3",
+    "eslint-plugin-flowtype": "4.6.0",
+    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "4.3.0",
+    "fs-extra": "^8.1.0",
+    "glob": "^7.1.6",
+    "inquirer": "^7.3.3",
+    "md5": "^2.3.0",
+    "prettier": "^2.1.2",
+    "react-sticky": "^6.0.3",
+    "webpack-bundle-analyzer": "^4.9.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts"
+    ],
+    "setupFiles": [
+      "react-app-polyfill/jsdom"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "testEnvironment": "jest-environment-jsdom-fourteen",
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "modulePaths": [],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web",
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "web.ts",
+      "ts",
+      "web.tsx",
+      "tsx",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
+    ],
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ]
+  },
+  "babel": {
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd-mobile",
+          "style": "css"
+        }
+      ]
+    ],
+    "presets": [
+      "react-app"
+    ]
+  }
+}

@@ -86,7 +86,8 @@ const App: React.FC = () => {
         if (res.data?.forbid > 0) return
         // 倒计时清0表示已经跳转
         if (window.countdownRef !== 0) {
-          // location.href = generateW2AOneLink({ urlQueryParams, mediaType })
+          calcTime()
+          location.href = generateW2AOneLink({ urlQueryParams, mediaType })
         }
       })
       .catch(() => {
@@ -105,7 +106,8 @@ const App: React.FC = () => {
             }
           })
           window.countdownRef = 0
-          // location.href = generateW2AOneLink({ urlQueryParams, mediaType })
+          calcTime()
+          location.href = generateW2AOneLink({ urlQueryParams, mediaType })
         }
       })
   }
@@ -231,17 +233,34 @@ const App: React.FC = () => {
             if (!window.notAllowW2AJump) {
               // 跳转前清空倒计时
               window.countdownRef = 0
-              // window.location.href = onelink
+              calcTime()
+              window.location.href = onelink
             }
           }, window.countdownRef - Date.now())
         } else {
           // 跳转前清空倒计时
           window.countdownRef = 0
-          // window.location.href = onelink
+          calcTime()
+          window.location.href = onelink
         }
       }
     }
   )
+
+  const calcTime = () => {
+    const pageLoadDuration = Date.now() - performance.timing.navigationStart
+    const data = {
+      metric: 'page_load_to_user_leave',
+      total_page_load_time: pageLoadDuration,
+      timestamp: Date.now(),
+      url: window.location.href,
+      userAgent: navigator.userAgent
+    }
+    navigator.sendBeacon(
+      'http://101.201.247.48:8085/time?a=2',
+      JSON.stringify(data)
+    )
+  }
 
   // 唤起app | 跳转应用商店页
   const handleEvokeApp = async (pixel: string) => {

@@ -86,7 +86,7 @@ const App: React.FC = () => {
         if (res.data?.forbid > 0) return
         // 倒计时清0表示已经跳转
         if (window.countdownRef !== 0) {
-          location.href = generateW2AOneLink({ urlQueryParams, mediaType })
+          // location.href = generateW2AOneLink({ urlQueryParams, mediaType })
         }
       })
       .catch(() => {
@@ -105,7 +105,7 @@ const App: React.FC = () => {
             }
           })
           window.countdownRef = 0
-          location.href = generateW2AOneLink({ urlQueryParams, mediaType })
+          // location.href = generateW2AOneLink({ urlQueryParams, mediaType })
         }
       })
   }
@@ -231,13 +231,13 @@ const App: React.FC = () => {
             if (!window.notAllowW2AJump) {
               // 跳转前清空倒计时
               window.countdownRef = 0
-              window.location.href = onelink
+              // window.location.href = onelink
             }
           }, window.countdownRef - Date.now())
         } else {
           // 跳转前清空倒计时
           window.countdownRef = 0
-          window.location.href = onelink
+          // window.location.href = onelink
         }
       }
     }

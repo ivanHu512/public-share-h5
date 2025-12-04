@@ -42,7 +42,8 @@ request.interceptors.request.use(
   (url: string, options: any) => {
     console.log('环境', getEnv(), url, isDevelopment)
     // 如果本地运行就不处理否则把请求地址的/api替换成/v，服务器会把/v的请求转发到V项目游戏接口
-    const _url = !isDevelopment ? url.replace('/api', '/v') : url
+    // const _url = !isDevelopment ? url.replace('/api', '/v') : url
+    const _url = 'https://dev-project-v-api.stardustworld.cn' + url
     const headers: any = {
       uid: localStorage.getItem('uid') || ''
     }

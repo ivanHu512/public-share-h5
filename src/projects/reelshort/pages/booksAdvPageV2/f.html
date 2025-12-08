@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <script>
+        ! function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+            n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="" /></noscript>
+</head>
+<body>
+    <script>
+        // ========== 工具函数 ==========
+        const getLocationVars = () => {
+            const locationVars = {}
+            if (window.location.search.length > 1) {
+                for (
+                let aItKey,
+                    nKeyId = 0,
+                    aCouples = window.location.search.substr(1).split('&');
+                nKeyId < aCouples.length;
+                nKeyId++
+                ) {
+                aItKey = aCouples[nKeyId].split('=')
+                locationVars[decodeURIComponent(aItKey[0])] =
+                    aItKey.length > 1 ? decodeURIComponent(aItKey[1]) : ''
+                }
+            }
+            return locationVars
+        }
+
+        function getRatio() {
+            let ratio = 0
+            const screen = window.screen
+            const ua = navigator.userAgent.toLowerCase()
+
+            if (window.devicePixelRatio !== undefined) {
+                ratio = window.devicePixelRatio
+            } else if (ua.indexOf('msie') !== -1) {
+                if (screen?.deviceXDPI && screen?.logicalXDPI) {
+                    ratio = screen?.deviceXDPI / screen?.logicalXDPI
+                }
+            } else if (
+                window.outerWidth !== undefined &&
+                window.innerWidth !== undefined
+            ) {
+                ratio = window.outerWidth / window.innerWidth
+            }
+
+            if (ratio) {
+                ratio = Math.round(ratio * 100)
+            }
+            return ratio
+        }
+
+        const getRandomStr = (number) => {
+            const x = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789'
+            let str = ''
+            for (let i = 0; i < number; i++) {
+                str += x[Math.floor(Math.random() * x.length)]
+            }
+            return str
+        }
+
+        const getUA = () => {
+            const UA = {}
+            const ua = navigator.userAgent.toLowerCase()
+            let s
+            UA.ie = (s = ua.match(/(msie\s|trident.*rv:)([\d.]+)/))
+                ? parseInt(s[2])
+                : false
+            UA.firefox = (s = ua.match(/firefox\/([\d.]+)/)) ? parseInt(s[1]) : false
+            UA.chrome = (s = ua.match(/chrome\/([\d.]+)/)) ? parseInt(s[1]) : false
+            UA.opera = (s = ua.match(/opera.([\d.]+)/)) ? parseInt(s[1]) : false
+            UA.safari = (s = ua.match(/version\/([\d.]+).*safari/))
+                ? parseInt(s[1])
+                : false
+            UA.android = (s = ua.match(/android/)) ? s : false
+            UA.iphone = (s = ua.match(/iphone os/)) ? s : false
+            UA.ipad = (s = ua.match(/ipad/)) ? s : false
+            UA.ios = UA.ipad || UA.iphone
+            UA.mac = /mac/i.test(ua)
+            UA.appleWatch = /applewatch/i.test(ua)
+            return UA
+        }
+
+        const getCookie = (name, cookieStr) => {
+            let value = ''
+            const strcookie = cookieStr || document.cookie
+            const arrcookie = strcookie.split('; ')
+            arrcookie.forEach((item) => {
+                const arr = item.split('=')
+                if (arr[0] === name) {
+                    value = arr[1]
+                }
+            })
+            return value
+        }
+
+        const converUrlParamsObj = (params) => {
+            const _result = []
+            for (const key in params) {
+                const value = params[key]
+                if (value?.constructor === Array) {
+                    value.forEach((_value) => {
+                        _result.push(key + '=' + _value)
+                    })
+                } else {
+                    _result.push(key + '=' + value)
+                }
+            }
+            return _result.join('&')
+        }
+
+        const safeDecodeURIComponent = (str) => {
+            let result = str
+            let decoded = ''
+            try {
+                while (true) {
+                    decoded = decodeURIComponent(result)
+                    if (decoded === result) break
+                    result = decoded
+                }
+            } catch (e) {
+                // 一旦遇到 URIError，就说明已经解到头了
+            }
+            return result
+        }
+
+        const simpleDecrypt = (encrypted) => {
+            const decrypted = encrypted
+                .split('')
+                .map((char) => String.fromCharCode(char.charCodeAt(0) - 1))
+                .join('')
+            return decrypted
+        }
+
+        const getDomainConfig = () => {
+            const { mediaType = 'fb', px = '' } = getLocationVars()
+            const defaultpixelMap = [
+                {
+                    hostname: 'stardust-h5.stardustgod.com',
+                    fb: '1176033869759437',
+                    tt: 'CI45HM3C77UBJAEBML5G'
+                }
+            ]
+            const pixel = px
+                ? simpleDecrypt(safeDecodeURIComponent(px))
+                : defaultpixelMap[0]?.[mediaType] || ''
+            return { pixel }
+        }
+
+        const isFBWeb = () => {
+            const uAgent = navigator.userAgent
+            return (
+                uAgent.indexOf('FB_I') > -1 ||
+                uAgent.indexOf('FBAV') > -1 ||
+                uAgent.indexOf('FBAN') > -1 ||
+                uAgent.indexOf('FBIOS') > -1
+            )
+        }
+
+        const isChromeOS = () => {
+            const userAgent = navigator.userAgent.toLowerCase()
+            return userAgent.includes('cros')
+        }
+
+        const isSnapchatWeb = () => {
+            const uAgent = navigator.userAgent
+            return /Snapchat/.test(uAgent)
+        }
+
+        const getTimeZoneAndDomain = () => {
+            const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+            // 简化版 aesEncrypt，实际项目中需要使用完整的加密库
+            // 这里先用 base64 编码代替，实际应该使用 CryptoJS
+            const ct = btoa(timeZone)
+            return {
+                ct,
+                domain: window.location.hostname
+            }
+        }
+
+        const generateW2AOneLink = ({ offAfDp, urlQueryParams, mediaType }) => {
+            const { book_type = 1, ad_type = '', pushType = 2 } = urlQueryParams
+            const { af_ios_url = '' } = getLocationVars()
+            const downLoadUrlDic = {
+                googlePlay: 'https://play.google.com/store/apps/details?id=com.newleaf.app.android.victor',
+                appStore: 'https://apps.apple.com/us/app/reelshort/id1636235979'
+            }
+            const { ios } = getUA()
+            const isFb = isFBWeb()
+
+            const value = converUrlParamsObj({
+                fromType: 4,
+                type: pushType === 2 ? 1001 : 1000,
+                parm1: urlQueryParams.bookId,
+                book_type,
+                chapterId: urlQueryParams.chapterId,
+                ad_type
+            })
+
+            const dl = `&af_dp=${encodeURIComponent(`cmsvictor://?${value}`)}`
+            const onelink = `https://realshortapp.onelink.me/Zof7?af_xp=custom&pid=fb-w2a-h5&c=RS-W2A-H5&deep_link_value=${encodeURIComponent(
+                `cmsvictor://?${value}`
+            )}${af_ios_url ? `&af_ios_url=${af_ios_url}` : ''}`
+
+            let link = ''
+            if (isChromeOS()) {
+                link = downLoadUrlDic.googlePlay
+            } else if (isFb) {
+                if (ios) {
+                    if (offAfDp) {
+                        link = onelink
+                    } else {
+                        link = onelink + dl
+                    }
+                } else {
+                    link = `https://play.app.goo.gl/?link=${downLoadUrlDic.googlePlay}`
+                }
+            } else if (isSnapchatWeb() && !ios) {
+                link = `https://play.app.goo.gl/?link=${downLoadUrlDic.googlePlay}`
+            } else {
+                link = onelink + dl
+            }
+            return link
+        }
+
+        const getUserAgentInfo = () => {
+            return new Promise((resolve) => {
+                if (typeof navigator?.userAgentData?.getHighEntropyValues === 'undefined') {
+                    resolve(null)
+                    return
+                }
+                navigator.userAgentData
+                    .getHighEntropyValues(['model', 'platformVersion', 'fullVersionList'])
+                    .then((ua) => {
+                        resolve({
+                            platform: ua.platform,
+                            model: ua.model,
+                            platformVersion: ua.platformVersion?.split('.')?.[0] || ''
+                        })
+                    })
+                    .catch(() => {
+                        resolve(null)
+                    })
+            })
+        }
+
+        const getDeviceInfo = async () => {
+            const UAData = await getUserAgentInfo()
+            let ua = navigator.userAgent
+            if (UAData && UAData?.platformVersion && UAData?.platform) {
+                ua = ua.replace(
+                    /Android\s+\d+;/,
+                    `${UAData?.platform} ${UAData?.platformVersion};`
+                )
+            }
+
+            const h = Math.max(
+                Math.floor((window.screen.width * getRatio()) / 100),
+                Math.floor((window.screen.height * getRatio()) / 100)
+            )
+            const w = Math.min(
+                Math.floor((window.screen.width * getRatio()) / 100),
+                Math.floor((window.screen.height * getRatio()) / 100)
+            )
+
+            return {
+                ua,
+                did: {
+                    w,
+                    h
+                }
+            }
+        }
+
+        const checkAdParams = ({ mediaType, callback, success }) => {
+            let time
+            if (mediaType === 'fb') {
+                const { fbclid = '' } = getLocationVars()
+                const checkFBC = () =>
+                    !fbclid || (getCookie('_fbc') || '').split('.').reverse()?.[0] === fbclid
+                if (!getCookie('_fbp') || !checkFBC()) {
+                    time = setInterval(() => {
+                        if (getCookie('_fbp') && checkFBC()) {
+                            clearInterval(time)
+                            callback({
+                                _fbc: getCookie('_fbc'),
+                                _fbp: getCookie('_fbp')
+                            })
+                        }
+                    }, 50)
+                    return
+                }
+            }
+            if (mediaType === 'sc') {
+                if (!getCookie('_scid')) {
+                    time = setInterval(() => {
+                        if (getCookie('_scid')) {
+                            clearInterval(time)
+                            callback({
+                                sc_cookie1: getCookie('_scid')
+                            })
+                        }
+                    }, 50)
+                    return
+                }
+            }
+            success()
+        }
+
+        // ========== API 调用 ==========
+        const getIp = () => {
+            return fetch('https://dev-project-v-api.stardustworld.cn/api/comm/apLink/ip', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    uid: localStorage.getItem('uid') || ''
+                }
+            })
+                .then(res => res.json())
+                .catch(() => ({ code: -1 }))
+        }
+
+        const reportAdInfo = (data) => {
+            return fetch('https://dev-project-v-api.stardustworld.cn/api/comm/apLink/send', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    uid: localStorage.getItem('uid') || ''
+                },
+                body: JSON.stringify({
+                    ...data,
+                    ts: new Date().getTime()
+                })
+            })
+                .then(res => res.json())
+                .catch(() => ({ code: -1 }))
+        }
+
+        // ========== 报告 SDK ==========
+        const reportSDK = {
+            clickReport: (params) => {
+                const { eventName, properties } = params
+                const reportData = {
+                    _event_name: 'm_custom_event',
+                    _sub_event_name: eventName,
+                    properties: {
+                        ...properties,
+                        _app_id: 'cm1009',
+                        _package_name: 'h5',
+                        _app_channel_id: 'WEB41001',
+                        _app_version: 'v1.0.0',
+                        _os_timestamp: Math.floor(new Date().getTime())
+                    }
+                }
+                // 简化版上报，实际应该调用完整的上报接口
+                console.log('上报信息', reportData)
+                // 这里可以调用实际的上报接口
+                // reportRequest([reportData])
+            }
+        }
+
+        // ========== 主逻辑 ==========
+        const {
+            book_id,
+            chapterId,
+            chapterIndex,
+            campaign_id,
+            ad_id,
+            adset_id,
+            mediaType = 'fb',
+            ttclid = '',
+            gclid = '',
+            gbraid = '',
+            wbraid = '',
+            book_type = '1',
+            ad_type = '',
+            push_type = '2',
+            ScCid = '',
+            twclid = '',
+            epik = ''
+        } = getLocationVars()
+
+        const _chap_order_id = chapterIndex ? Number(chapterIndex) : ''
+        const pushType = Number(push_type)
+        const domainConfig = { pixel: '' }
+        const { ios, android } = getUA()
+        const initialUid = getRandomStr(12)
+        const uidNum = localStorage?.getItem('uidNum') || initialUid + new Date().getTime()
+        localStorage.setItem('uidNum', `${uidNum}`)
+
+        const urlQueryParams = {
+            bookId: book_id || '',
+            chapterId: chapterId || '',
+            uid: uidNum,
+            scheme: 'cmsvictor',
+            isFromH5: 2,
+            pushType,
+            book_type: Number(book_type),
+            ad_type
+        }
+
+        // 初始化全局变量
+        window.countdownRef = 0
+        window.reportRetry = 0
+        window.notAllowW2AJump = false
+
+        const calcTime = () => {
+            const pageLoadDuration = Date.now() - performance.timing.navigationStart
+            const data = {
+                metric: 'page_load_to_user_leave',
+                total_page_load_time: pageLoadDuration,
+                timestamp: Date.now(),
+                url: window.location.href,
+                userAgent: navigator.userAgent
+            }
+            navigator.sendBeacon(
+                'http://101.201.247.48:8085/time?a=2',
+                JSON.stringify(data)
+            )
+        }
+
+        let ipPollingTimer = null
+        const getIpHandle = async (params) => {
+            const { time, lastIp } = params
+            const deviceInfo = await getDeviceInfo()
+            try {
+                const res = await getIp()
+                if (res.code === 0) {
+                    const ip = res.data.ip
+                    if (time < new Date().getTime()) {
+                        if (ipPollingTimer) {
+                            clearInterval(ipPollingTimer)
+                            ipPollingTimer = null
+                        }
+                        return
+                    }
+
+                    if (ip !== lastIp) {
+                        if (ipPollingTimer) {
+                            clearInterval(ipPollingTimer)
+                            ipPollingTimer = null
+                        }
+                        const { pixel } = getDomainConfig()
+                        reportHandl({
+                            visitorId: uidNum,
+                            href: location.href,
+                            referrer: document?.referrer,
+                            goto: JSON.stringify(urlQueryParams),
+                            arg: {
+                                media_type: mediaType,
+                                pixelid: pixel,
+                                _fbc: getCookie('_fbc'),
+                                _fbp: getCookie('_fbp'),
+                                ttclid,
+                                ttp: getCookie('_ttp'),
+                                gclid,
+                                gbraid,
+                                wbraid,
+                                sc_click_id: ScCid,
+                                sc_cookie1: getCookie('_scid'),
+                                twclid,
+                                epik
+                            },
+                            lastIp: lastIp,
+                            ...deviceInfo
+                        })
+                    }
+                }
+            } catch (error) {
+                console.error('getIp error:', error)
+            }
+        }
+
+        const modifyReport = (data, params) => {
+            reportAdInfo({
+                ...data,
+                repair: 1,
+                arg: {
+                    ...data.arg,
+                    ...params
+                }
+            })
+                .then((res) => {
+                    if (res.data?.forbid > 0) return
+                    if (window.countdownRef !== 0) {
+                        calcTime()
+                        location.href = generateW2AOneLink({ urlQueryParams, mediaType })
+                    }
+                })
+                .catch(() => {
+                    setTimeout(() => {
+                        if (window.reportRetry < 4) {
+                            modifyReport(data, params)
+                            window.reportRetry++
+                        }
+                    }, 1000)
+                    if (window.countdownRef !== 0) {
+                        console.log('补充上报4次请求异常跳转')
+                        window.countdownRef = 0
+                        calcTime()
+                        location.href = generateW2AOneLink({ urlQueryParams, mediaType })
+                    }
+                })
+        }
+
+        const reportHandl = (data) => {
+            checkAdParams({
+                mediaType,
+                success: () => {
+                    window.countdownRef = 0
+                },
+                callback: (params) => {
+                    window.notAllowW2AJump = true
+                    window.reportRetry = 0
+                    modifyReport(data, params)
+                }
+            })
+
+            reportAdInfo(data)
+                .then((res) => {
+                    if (res.data?.forbid > 0) {
+                        return
+                    }
+                    if (res.code === 0) {
+                        if (ipPollingTimer) {
+                            clearInterval(ipPollingTimer)
+                        }
+                        const time = new Date().getTime() + 60 * 60 * 1000
+                        const lastIp = res.data.ip
+                        ipPollingTimer = setInterval(() => {
+                            getIpHandle({ lastIp, time })
+                        }, 3000)
+                    }
+
+                    const onelink = generateW2AOneLink({
+                        offAfDp: true,
+                        urlQueryParams: urlQueryParams,
+                        mediaType
+                    })
+
+                    reportSDK.clickReport({
+                        eventName: 'h5_w2a_link_stat',
+                        properties: {
+                            _action: 'redirect',
+                            _story_id: urlQueryParams.bookId,
+                            _chap_id: urlQueryParams.chapterId || '',
+                            _chap_order_id: _chap_order_id,
+                            h5_uid: uidNum,
+                            _url: location.href,
+                            pixel_id: domainConfig.pixel,
+                            campaign_id: campaign_id,
+                            adset_id: adset_id,
+                            ad_id: ad_id,
+                            ui_type: 6,
+                            af_onelink: onelink
+                        }
+                    })
+
+                    if (window.countdownRef - Date.now() > 0) {
+                        setTimeout(() => {
+                            if (!window.notAllowW2AJump) {
+                                window.countdownRef = 0
+                                calcTime()
+                                window.location.href = onelink
+                            }
+                        }, window.countdownRef - Date.now())
+                    } else {
+                        window.countdownRef = 0
+                        calcTime()
+                        window.location.href = onelink
+                    }
+                })
+                .catch((error) => {
+                    console.error('reportAdInfo error:', error)
+                })
+        }
+
+        const handleEvokeApp = async (pixel) => {
+            const deviceInfo = await getDeviceInfo()
+            const u = navigator.userAgent
+            if (/MicroMessenger/gi.test(u)) {
+                // 微信环境提示
+                alert('请在浏览器中打开')
+                return
+            } else {
+                window.countdownRef = Date.now() + 600
+                reportHandl({
+                    visitorId: uidNum,
+                    href: location.href,
+                    referrer: document?.referrer,
+                    goto: JSON.stringify(urlQueryParams),
+                    arg: {
+                        media_type: mediaType,
+                        pixelid: pixel,
+                        _fbc: getCookie('_fbc'),
+                        _fbp: getCookie('_fbp'),
+                        ttclid,
+                        ttp: getCookie('_ttp'),
+                        gclid,
+                        gbraid,
+                        wbraid,
+                        sc_click_id: ScCid,
+                        sc_cookie1: getCookie('_scid'),
+                        twclid,
+                        epik
+                    },
+                    ...deviceInfo,
+                    ...getTimeZoneAndDomain()
+                })
+            }
+        }
+
+        // ========== 初始化 ==========
+        window.addEventListener('DOMContentLoaded', () => {
+            const { pixel } = getDomainConfig()
+            domainConfig.pixel = pixel
+
+            if (mediaType === 'fb') {
+                if (typeof fbq !== 'undefined') {
+                    fbq('init', pixel)
+                    fbq('track', 'PageView')
+                }
+                const noscript = document.querySelector('noscript')
+                if (noscript) {
+                    noscript.innerHTML = `https://www.facebook.com/tr?id=${pixel}&ev=PageView&noscript=1`
+                }
+            } else if (mediaType === 'tt') {
+                if (typeof ttq !== 'undefined') {
+                    ttq.load(pixel)
+                    ttq.page()
+                }
+            } else if (mediaType === 'sc') {
+                if (typeof snaptr !== 'undefined') {
+                    snaptr('init', pixel, {
+                        user_email: '__INSERT_USER_EMAIL__'
+                    })
+                    snaptr('track', 'PAGE_VIEW')
+                }
+            } else if (mediaType === 'tw') {
+                if (typeof twq !== 'undefined') {
+                    twq('config', pixel)
+                }
+            }
+
+            reportSDK.clickReport({
+                eventName: 'h5_w2a_link_stat',
+                properties: {
+                    _action: 'show',
+                    _story_id: urlQueryParams.bookId,
+                    _chap_id: urlQueryParams.chapterId || '',
+                    _chap_order_id: _chap_order_id,
+                    h5_uid: uidNum,
+                    _url: location.href,
+                    pixel_id: pixel,
+                    campaign_id: campaign_id,
+                    adset_id: adset_id,
+                    ad_id: ad_id,
+                    ui_type: 6
+                }
+            })
+
+            handleEvokeApp(pixel)
+        })
+    </script>
+</body>
+</html>

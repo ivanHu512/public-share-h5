@@ -504,6 +504,7 @@
                     if (res.data?.forbid > 0) return
                     if (window.countdownRef !== 0) {
                         calcTime()
+                        console.log("开始跳3")
                         // location.href = generateW2AOneLink({ urlQueryParams, mediaType })
                     }
                 })
@@ -518,6 +519,7 @@
                         console.log('补充上报4次请求异常跳转')
                         window.countdownRef = 0
                         calcTime()
+                        console.log("开始跳4")
                         // location.href = generateW2AOneLink({ urlQueryParams, mediaType })
                     }
                 })
@@ -581,12 +583,14 @@
                             if (!window.notAllowW2AJump) {
                                 window.countdownRef = 0
                                 calcTime()
+                                console.log("开始跳1")
                                 // window.location.href = onelink
                             }
                         }, window.countdownRef - Date.now())
                     } else {
                         window.countdownRef = 0
                         calcTime()
+                        console.log("开始跳2")
                         // window.location.href = onelink
                     }
                 })

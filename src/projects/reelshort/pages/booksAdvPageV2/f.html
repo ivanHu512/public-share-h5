@@ -504,7 +504,7 @@
                     if (res.data?.forbid > 0) return
                     if (window.countdownRef !== 0) {
                         calcTime()
-                        location.href = generateW2AOneLink({ urlQueryParams, mediaType })
+                        // location.href = generateW2AOneLink({ urlQueryParams, mediaType })
                     }
                 })
                 .catch(() => {
@@ -518,7 +518,7 @@
                         console.log('补充上报4次请求异常跳转')
                         window.countdownRef = 0
                         calcTime()
-                        location.href = generateW2AOneLink({ urlQueryParams, mediaType })
+                        // location.href = generateW2AOneLink({ urlQueryParams, mediaType })
                     }
                 })
         }
@@ -581,13 +581,13 @@
                             if (!window.notAllowW2AJump) {
                                 window.countdownRef = 0
                                 calcTime()
-                                window.location.href = onelink
+                                // window.location.href = onelink
                             }
                         }, window.countdownRef - Date.now())
                     } else {
                         window.countdownRef = 0
                         calcTime()
-                        window.location.href = onelink
+                        // window.location.href = onelink
                     }
                 })
                 .catch((error) => {
